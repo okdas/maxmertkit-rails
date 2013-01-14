@@ -1,8 +1,8 @@
-# Maxmertkit::Rails
+# Maxmertkit for Rails
 
-Maxmertkit
+Maxmertkit is css framework based on widget-modifier coding style
 
-Css framework based on widget-modifier coding style
+Official repo: https://github.com/maxmert/maxmertkit
 
 Official demo: http://maxmert.com/
 
