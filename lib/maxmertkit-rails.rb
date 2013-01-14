@@ -1,7 +1,8 @@
+require "rails"
 require "maxmertkit-rails/version"
 
 module Maxmertkit
   module Rails
-    require "contentflow/engine"
+    require "maxmertkit-rails/engine"
   end
 end
