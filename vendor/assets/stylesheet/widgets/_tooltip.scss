@@ -1,0 +1,19 @@
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__tooltip} {
+	@extend %__object;
+
+	position: relative;
+	@include border-radius( $object__tooltip-border-radius );
+	@include box-shadow( $object__tooltip-shadow, inset 0 2px 0 rgba(255,255,255,.3) );
+
+	@include set_modificator($mod__status, gradient-vertical-darkener, color-invert-important, text-shadow);
+	@include set_modificator(exclude-items($mod__size, small, tiny), padding-small, font-size-small, line-height-small);
+
+	&.-#{$mod__status__disabled}- {
+		opacity: .8;
+	}
+}

@@ -1,0 +1,92 @@
+[class*="#{$object__icon}"],
+[class^="#{$object__icon}"],
+.#{$object__icon} {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 0;
+	margin-top: -2px;
+}
+
+.#{$object__icon} {
+	&:before {
+		content: "\f000";
+		@include opacity( 0 );
+	}
+}
+
+.-#{$mod__status__disabled}- {
+	[class*="#{$object__icon}"],
+	.#{$object__icon} {
+		opacity: .4;
+	}
+}
+
+
+
+
+
+
+
+
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('#{$font-path}/fontawesome/fontawesome-webfont.eot');
+	src: url('#{$font-path}/fontawesome/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('#{$font-path}/fontawesome/fontawesome-webfont.woff') format('woff'),
+		 url('#{$font-path}/fontawesome/fontawesome-webfont.ttf') format('truetype'),
+		 url('#{$font-path}/fontawesome/fontawesome-webfont.svg#zocialregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+[class*="#{$object__icon}"],
+[class^="#{$object__icon}"],
+.#{$object__icon} {
+	&:before {
+		font-family: 'FontAwesome'!important;
+		font-style: normal;
+	}
+}
+
+@each $icon in $object__icon__names {
+	.#{$object__icon}-#{$icon}:before {
+		content: nth($object__icon__content, index($object__icon__names, $icon));
+	}
+}
+
+
+
+
+@font-face {
+	font-family: 'Zocial';
+	src: url('#{$font-path}/zocial/zocial-regular-webfont.eot');
+	src: url('#{$font-path}/zocial/zocial-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('#{$font-path}/zocial/zocial-regular-webfont.woff') format('woff'),
+		 url('#{$font-path}/zocial/zocial-regular-webfont.ttf') format('truetype'),
+		 url('#{$font-path}/zocial/zocial-regular-webfont.svg#zocialregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+[class*="#{$object__icon__social}"],
+[class^="#{$object__icon__social}"],
+.#{$object__icon__social} {
+	width: auto;
+	height: auto;
+	background-image: none;
+
+	&:before {
+		font-family: 'Zocial'!important;
+		font-style: normal;
+	}
+}
+
+
+@each $icon in $object__icon__social-names {
+	.#{$object__icon__social}-#{$icon}:before {
+		content: nth($object__icon__social-content, index($object__icon__social-names, $icon));
+	}
+}

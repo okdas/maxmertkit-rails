@@ -1,0 +1,118 @@
+@include init_modificator-status($object__toolbar);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__toolbar} {
+	display: block;
+	border-width: $object__toolbar-border-width;
+	border-style: solid;
+	border-left: none;
+	border-right: none;
+
+	.#{$object__button} {
+		@include box-shadow( none );
+		position: relative;
+		bottom: -1px;
+
+		&:hover {
+			@include box-shadow( $object__button-shadow );
+			position: relative;
+			z-index: 1;
+		}
+
+		&.-#{$mod__status__disabled}- {
+			@include box-shadow(none!important);
+			text-decoration: none!important;
+			cursor: default;
+			background-color: transparent!important;
+			background-image: none!important;
+			filter: none!important;
+			border-color: transparent!important;
+			@include text-shadow( none );
+			color: #ccc;
+		}
+
+		&.#{$mod__unclickable},
+		&.#{$mod__unclickable}:hover,
+		&.#{$mod__unclickable}:active {
+			@include set_modificator(exclude-items($mod__status,$mod__status__disabled), color-invert, border-color, gradient-vertical, text-shadow);
+			@include set_modificator(only-items($mod__status,$mod__status__disabled), color-invert, border-color, background-color, text-shadow);
+			@include box-shadow( none!important );
+			cursor: default;
+		}
+	}
+
+	.#{$object__group} {
+		position: relative;
+		top: -1px;
+	}
+
+	&.-#{$mod__status__disabled}- {
+		.#{$object__button},
+		.#{$object__button}:hover,
+		.#{$object__button}:active,
+		.#{$object__button}.#{$mod__active},
+		.#{$object__button}.-#{$mod__status__disabled}-,
+		input,
+		.#{$object__caret} {
+			@include box-shadow(none!important);
+			text-decoration: none!important;
+			cursor: default;
+			background-color: transparent!important;
+			background-image: none!important;
+			filter: none!important;
+			border-color: #eee!important;
+			@include text-shadow( none );
+			color: #ccc;
+			// $__inheritance: $object__toolbar;
+			// $__before-object: '';
+			// $__object: this;
+			// $__after-object: '';
+			// @include set_modificator(only-items($mod__status, $mod__status__disabled), color);
+		}
+	}
+
+	input {
+		position: relative;
+		bottom: -1px;
+	}
+
+	.#{$object__button}:active,
+	.#{$object__button}.#{$mod__active} {
+		@include box-shadow($object__button-active-shadow);
+	}
+}
+
+.#{$object__toolbar} + .#{$object__toolbar} {
+	border-top: none;
+}
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__toolbar}';
+$__after-object: '';
+@include set_modificator($mod__size, padding);
+@include set_modificator(only-items($mod__status, $mod__status__disabled, default), color-invert, background-color-darken, border-color-lighten);
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled, default), color-invert, background-color-lightener, border-color-lighten);
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__toolbar}';
+$__after-object: '.#{$object__button}';
+@include set_modificator($mod__size, padding-object, font-size, line-height);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__toolbar}';
+$__after-object: 'input';
+@include set_modificator($mod__size, input-padding, font-size, line-height);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__toolbar}.#{$mod__loading}';
+$__after-object: '';
+@include set_modificator($mod__status, loading);

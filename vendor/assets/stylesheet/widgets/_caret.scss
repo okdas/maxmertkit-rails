@@ -1,0 +1,34 @@
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__caret} {
+	display: inline-block;
+	width:0;
+	height: 0;
+	vertical-align: middle;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-right-color: transparent!important;
+	border-left-color: transparent!important;
+	
+	@include set_modificator($mod__size, border-width);
+	@include set_modificator($mod__status, color-invert, border-color-darkener);
+
+	&.#{$mod__side-top} {
+		border-top-style: none;
+		border-bottom-style: solid;
+		margin-top: -2px;
+	}
+}
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__button}' 'button' 'input[type="button"]' '.#{$object__group}' '.#{$object__tabs}';
+$__after-object: '.#{$object__caret}';
+@include set_modificator($mod__status, color-invert);
+@include set_modificator(exclude-items($mod__status, dark, $mod__status__disabled), border-color-darkener);
+@include set_modificator(only-items($mod__status, dark), border-color-lightener);
+@include set_modificator($mod__size, border-width);

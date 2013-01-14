@@ -1,0 +1,70 @@
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__progressbar} {
+
+	font-size: 0;
+	position: relative;
+	display: inline-block;
+	@include border-radius( $object__progressbar-border-radius );
+	@include box-shadow( $object__progressbar-shadow );
+	line-height: 0;
+	min-height: 12px;
+
+	.#{$object__progressbar__bar} {
+		@extend %__object;
+		height: 100%;
+		min-height: 12px;
+		@include border-radius( $object__progressbar-border-radius );
+		@include box-shadow( $object__progressbar__bar-shadow );
+
+		text-align: center;
+	}
+
+	.#{$object__progressbar__globalBar} {
+		@include border-radius( $object__progressbar-border-radius - 10 );
+		@include box-shadow( $object__progressbar__globalBar-shadow );
+		position: absolute;
+		left:0; top: 0;
+		top: 0; bottom: 0;
+		text-align: center;
+	}
+}
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__progressbar}';
+$__after-object: '';
+@include set_modificator(only-items($mod__status, $mod__status__disabled, default), background-color);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__progressbar}';
+$__after-object: '.#{$object__progressbar__bar}' '.#{$object__progressbar__globalBar}';
+@include set_modificator($mod__size, line-height, padding-small, font-size);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__progressbar}';
+$__after-object: '.#{$object__progressbar__bar}';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled, default), background-color, color-invert, text-shadow);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__progressbar}.#{$mod__loading}';
+$__after-object: '.#{$object__progressbar__bar}';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), loading-dark);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__progressbar}';
+$__after-object: '.#{$object__progressbar__bar}';
+@include set_modificator(only-items($mod__status, $mod__status__disabled, default), background-color-darken, color-invert, text-shadow);
+
+$__inheritance: object;
+$__before-object: '.#{$object__progressbar}';
+$__object: '.#{$object__progressbar__bar}' '.#{$object__progressbar__globalBar}';
+$__after-object: '';
+@include set_modificator($mod__status, background-color, color-invert, text-shadow);

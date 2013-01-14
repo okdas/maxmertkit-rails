@@ -1,0 +1,15 @@
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__badge} {
+	@extend %__object;
+
+	display: inline-block;
+	@include set_modificator(exclude-items($mod__size, small, tiny), padding-small, font-size-small, line-height-small);
+	$__inheritance: $object__tabs;
+	@include set_modificator($mod__status, background-color-darken, color-invert);
+
+	@include border-radius( $object__badge-border-radius );
+}

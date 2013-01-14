@@ -1,0 +1,74 @@
+// We will uset only with other elements
+
+.#{$object__arrow} {
+	@extend %__object;
+
+	display: inline-block;
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__dropdown}';
+$__after-object: '.#{$object__arrow}';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__tooltip}';
+$__after-object: '.#{$object__arrow}';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color-darkener);
+
+@mixin _set-arrow-positions( $object, $arrow-size )
+{
+	.#{$object} .#{$object__arrow} {
+		border-width: $arrow-size;
+		display: none;
+	}
+
+	.#{$object}.#{$mod__side-top} .#{$object__arrow}{
+		border-bottom-style: none;
+		border-left-color: transparent!important;
+		border-right-color: transparent!important;
+		bottom: -$arrow-size;
+		left: 50%;
+		margin-left: -$arrow-size;
+		display: block;
+	}
+
+	.#{$object}.#{$mod__side-bottom} .#{$object__arrow}{
+		border-top-style: none;
+		border-left-color: transparent!important;
+		border-right-color: transparent!important;
+		top: -$arrow-size;
+		left: 50%;
+		margin-left: -$arrow-size;
+		display: block;
+	}
+
+	.#{$object}.#{$mod__side-left} .#{$object__arrow}{
+		border-right-style: none;
+		border-top-color: transparent!important;
+		border-bottom-color: transparent!important;
+		right: -$arrow-size;
+		top: 50%;
+		margin-top: -$arrow-size;
+		display: block;
+	}
+
+	.#{$object}.#{$mod__side-right} .#{$object__arrow}{
+		border-left-style: none;
+		border-top-color: transparent!important;
+		border-bottom-color: transparent!important;
+		left: -$arrow-size;
+		top: 50%;
+		margin-top: -$arrow-size;
+		display: block;
+	}
+}
+
+@include _set-arrow-positions( $object__dropdown, $object__arrow-size );
+@include _set-arrow-positions( $object__tooltip, $object__tooltip__arrow-size );

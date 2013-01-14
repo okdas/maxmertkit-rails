@@ -1,0 +1,208 @@
+@mixin init_modificator-size( $__inheritance: object ){
+	
+	@each $size in $mod__size {
+		$num: index( $mod__size, $size );
+
+		%#{$__inheritance}-size-#{$size}-line-height {
+			line-height: $theme__line-height + nth($mod__size-delta, $num);
+		}
+
+		%#{$__inheritance}-size-#{$size}-line-height-small {
+			line-height: 12px + nth($mod__size-delta, $num) - 2;
+		}
+
+		%#{$__inheritance}-size-#{$size}-input-line-height {
+			line-height: $theme__line-height + nth($mod__size-delta, $num) - 2;
+		}
+
+		%#{$__inheritance}-size-#{$size}-font-size {
+			$_font-size: 10px;
+			@if ($theme__font-size + nth($mod__size-delta, $num)) > 10 {
+				@if $size == default {
+					$_font-size: $theme__font-size + nth($mod__size-delta, $num) - 2;
+				}
+				@else {
+					$_font-size: $theme__font-size + nth($mod__size-delta, $num);
+				}
+			}
+			font-size: $_font-size;
+		}
+
+		%#{$__inheritance}-size-#{$size}-font-size-small {
+			$_font-size: 12px;
+			@if ($theme__font-size + nth($mod__size-delta, $num)) > $_font-size {
+				@if $size == default {
+					$_font-size: $_font-size + nth($mod__size-delta, $num) - 2;
+				}
+				@else {
+					$_font-size: $_font-size + nth($mod__size-delta, $num);
+				}
+			}
+			font-size: $_font-size;
+		}
+
+		%#{$__inheritance}-size-#{$size}-padding {
+			$_vertical: 3px;
+			$_horizontal: 4px;
+			
+			@if (2px + nth($mod__size-delta, $num)) > 0 {
+				$_vertical: 2px + nth($mod__size-delta, $num);
+			}
+
+			@if (4px + nth($mod__size-delta, $num)) > 0 {
+				$_horizontal: 4px + nth($mod__size-delta, $num);
+			}
+
+			padding: $_vertical $_horizontal;
+		}
+
+		%#{$__inheritance}-size-#{$size}-padding-small {
+			$_vertical: 1px;
+			$_horizontal: 3px;
+			
+			@if ($_vertical + nth($mod__size-delta, $num)) > 0 {
+				$_vertical: $_vertical + nth($mod__size-delta, $num);
+			}
+
+			@if ($_horizontal + nth($mod__size-delta, $num)) > 0 {
+				$_horizontal: $_horizontal + nth($mod__size-delta, $num);
+			}
+
+			padding: $_vertical $_horizontal;
+		}
+
+		%#{$__inheritance}-size-#{$size}-padding-big {
+			$_vertical: 6px;
+			$_horizontal: 8px;
+			
+			@if ($_vertical + nth($mod__size-delta, $num)) > 0 {
+				$_vertical: $_vertical + nth($mod__size-delta, $num);
+			}
+
+			@if ($_horizontal + nth($mod__size-delta, $num)) > 0 {
+				$_horizontal: $_horizontal + nth($mod__size-delta, $num);
+			}
+
+			padding: $_vertical $_horizontal;
+		}
+
+		%#{$__inheritance}-size-#{$size}-padding-huge {
+			$_vertical: 10px;
+			$_horizontal: 13px;
+			
+			@if ($_vertical + nth($mod__size-delta, $num)) > 0 {
+				$_vertical: $_vertical + nth($mod__size-delta, $num);
+			}
+
+			@if ($_horizontal + nth($mod__size-delta, $num)) > 0 {
+				$_horizontal: $_horizontal + nth($mod__size-delta, $num);
+			}
+
+			padding: $_vertical $_horizontal;
+		}
+
+		%#{$__inheritance}-size-#{$size}-input-padding {
+			$_vertical: 2px;
+			$_vertical_ie: 3px\9;
+			$_vertical_fox: 2px;
+			$_horizontal: 4px;
+			
+			@if (2px + nth($mod__size-delta, $num)) > 0 {
+				$_vertical_ie: 3px + nth($mod__size-delta, $num)#{'\9'};
+				$_vertical_fox: nth($mod__size-delta, $num);
+				@if (2 + nth($mod__size-delta, $num) == 8 or 2 + nth($mod__size-delta, $num) == 6) {
+					$_vertical: 1px + nth($mod__size-delta, $num);
+				} @else
+				{
+					$_vertical: 2px + nth($mod__size-delta, $num);
+				}
+
+			}
+
+			@if (4px + nth($mod__size-delta, $num) > 0 )  {
+				$_horizontal: 4px + nth($mod__size-delta, $num);
+			}
+
+			@if( nth($mod__size-delta, $num) != -4 ) {
+				padding: $_vertical $_horizontal $_vertical + 1;
+			} @else 
+			{
+				padding: $_vertical +1 $_horizontal $_vertical + 1;
+			}
+			padding-top: $_vertical_ie;
+			padding-bottom: $_vertical_ie;
+			@-moz-document url-prefix() {
+				padding-top: $_vertical_fox;
+				padding-bottom: $_vertical_fox;
+			}
+			@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+				padding: $_vertical + 2 $_horizontal;
+			}
+			// @-moz-document url-prefix() {
+			// 	padding: $_vertical + 1 $_horizontal $_vertical;
+			// }
+		}
+
+		%#{$__inheritance}-size-#{$size}-padding-object {
+			$_vertical: 3px;
+			$_horizontal: 4px;
+			
+			@if (2px + nth($mod__size-delta, $num)) > 0 {
+				$_vertical: 2px + nth($mod__size-delta, $num);
+			}
+
+			@if (4px + nth($mod__size-delta, $num)) > 0 {
+				$_horizontal: 7px + nth($mod__size-delta, $num);
+			}
+
+			padding: $_vertical $_horizontal;
+		}
+
+		%#{$__inheritance}-size-#{$size}-border-width {
+			$_width: 3px;
+			@if (nth($mod__size-delta, $num) > 0 ) {
+				$_width: $_width + nth($mod__size-delta, $num) / 2 ;
+			}
+
+			border-width: $_width;
+		}
+
+		%#{$__inheritance}-size-#{$size}-border-width-big {
+			$_width: 5px;
+			@if (nth($mod__size-delta, $num) > 0 ) {
+				$_width: $_width + nth($mod__size-delta, $num) / 2 ;
+			}
+
+			border-width: $_width;
+		}
+	}
+
+}
+
+// @mixin init_modificator-status{
+	
+// 	@each $status in $mod__status {
+// 		$num: index( $mod__status, $status );
+
+// 		%#{$__inheritance}-status-#{$status}-color {
+// 			color: nth($mod__status-color, $num);
+// 		}
+
+// 		%#{$__inheritance}-status-#{$status}-border-color {
+// 			border-color: nth($mod__status-border-color, $num);
+// 		}
+
+// 		%#{$__inheritance}-status-#{$status}-border-color-darken {
+// 			border-color: nth($mod__status-border-color-darken, $num);
+// 		}
+
+// 		%#{$__inheritance}-status-#{$status}-border-color-lighten {
+// 			border-color: nth($mod__status-border-color-lighten, $num);
+// 		}
+
+// 		%#{$__inheritance}-status-#{$status}-outline {
+// 			@include box-shadow(#{nth($mod__status-outline, $num)});
+// 		}
+// 	}
+
+// }

@@ -1,0 +1,270 @@
+$object__table-notimportant: '-table-notimportant';
+$object__table-important: '-table-important';
+
+
+@include init_modificator-status($object__table-notimportant);
+@include init_modificator-status($object__table);
+@include init_modificator-status($object__table-important);
+
+.#{$object__table} {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+
+	th {
+		text-align: left;
+		$__inheritance: object;
+		$__before-object: '';
+		$__object: this;
+		$__after-object: '';
+
+		@include set_modificator($mod__size, padding-object, font-size, line-height);
+	}
+	
+	td {
+		border-top-width: $object__table-border-width;
+		border-top-style: solid;
+
+	}
+
+	&.#{$mod__bordered} {
+		td {
+			border-width: $object__table-border-width;
+			border-style: solid;
+		}
+	}
+
+	&.#{$mod__vertical} {
+		td {
+			border-top-width: 0;
+			border-left-width: $object__table-border-width;
+			border-left-style: solid;
+
+			&:first-child {
+				border-left-width: 0;
+			}
+		}
+	}
+
+	&.-#{$mod__status__unstyled}-,
+	&.-#{$mod__status__unstyled}- td {
+		border-width: 0!important;
+	}
+
+}
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__table}.#{$mod__loading}';
+$__after-object: 'tr td';
+
+@include set_modificator($mod__status, loading);
+
+
+$__inheritance: object;
+$__before-object: '.#{$object__table} tr';
+$__object: 'td.#{$mod__loading}';
+$__after-object: '';
+
+@include set_modificator($mod__status, loading);
+
+
+$__inheritance: $object__table;
+$__before-object: '.#{$object__table}';
+$__object: 'tr.#{$mod__loading}';
+$__after-object: 'td';
+
+@include set_modificator($mod__status, loading);
+
+
+
+
+
+
+$__inheritance: object;
+$__before-object: '.#{$object__table}';
+$__object: 'tr';
+$__after-object: 'td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), border-color);
+@include set_modificator($mod__size, padding-object, font-size, line-height);
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__table}';
+$__after-object: 'tr td';
+
+@include set_modificator(exclude-items($mod__status, default, $mod__status__unstyled), background-color, border-color-darken, color-invert);
+@include set_modificator(only-items($mod__status, $mod__status__unstyled), background-color, border-color-darken, color-invert);
+@include set_modificator($mod__size, padding-object, font-size, line-height);
+
+
+$__inheritance: object;
+$__before-object: '.#{$object__table} tr';
+$__object: 'td';
+$__after-object: '';
+
+@include set_modificator($mod__size, padding-object, font-size, line-height);
+
+
+$__inheritance: $object__table;
+$__before-object: '.#{$object__table}';
+$__object: 'tr';
+$__after-object: 'td';
+
+@include set_modificator(exclude-items($mod__status, default), background-color, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table-important;
+$__before-object: '.#{$object__table} tr';
+$__object: 'td';
+$__after-object: '';
+
+@include set_modificator(exclude-items($mod__status, default), background-color, border-color-darken, color-invert);
+
+
+
+
+
+
+
+$__inheritance: object;
+$__before-object: '.#{$object__table}.#{$mod__hovered}';
+$__object: 'tr:hover';
+$__after-object: 'td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), border-color, background-color);
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__table}.#{$mod__hovered}';
+$__after-object: 'tr:hover td';
+
+@include set_modificator(exclude-items($mod__status, default, $mod__status__unstyled), background-color-darken, border-color-darken, color-invert);
+@include set_modificator(only-items($mod__status, $mod__status__unstyled), background-color-darken, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table;
+$__before-object: '.#{$object__table}.#{$mod__hovered}';
+$__object: 'tr:hover';
+$__after-object: 'td';
+
+@include set_modificator(exclude-items($mod__status, default), background-color-darken, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table-important;
+$__before-object: '.#{$object__table}.#{$mod__hovered} tr:hover';
+$__object: 'td';
+$__after-object: '';
+
+@include set_modificator(exclude-items($mod__status, default), background-color-darken, border-color-darken, color-invert);
+
+
+
+
+
+
+
+$__inheritance: $object__table-notimportant;
+$__before-object: '.#{$object__table}.#{$mod__striped}';
+$__object: 'tr:nth-child(odd)';
+$__after-object: 'td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), border-color);
+
+
+$__inheritance: $object__table-notimportant;
+$__before-object: '';
+$__object: '.#{$object__table}.#{$mod__striped}';
+$__after-object: 'tr:nth-child(odd) td';
+
+@include set_modificator(exclude-items($mod__status, default, $mod__status__unstyled), background-color, border-color-darken, color-invert);
+@include set_modificator(only-items($mod__status, $mod__status__unstyled), background-color-darken, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table;
+$__before-object: '.#{$object__table}.#{$mod__striped}';
+$__object: 'tr:nth-child(odd)';
+$__after-object: 'td';
+
+@include set_modificator(exclude-items($mod__status, default), background-color-darken, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table-important;
+$__before-object: '.#{$object__table}.#{$mod__striped} tr:nth-child(odd)';
+$__object: 'td';
+$__after-object: '';
+
+@include set_modificator(exclude-items($mod__status, default), background-color-darken, border-color-darken, color-invert);
+
+
+
+$__inheritance: $object__table-notimportant;
+$__before-object: '.#{$object__table}.#{$mod__striped}';
+$__object: 'tr:nth-child(even)';
+$__after-object: 'td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), border-color);
+
+
+$__inheritance: $object__table-notimportant;
+$__before-object: '';
+$__object: '.#{$object__table}.#{$mod__striped}';
+$__after-object: 'tr:nth-child(even) td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), background-color, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table;
+$__before-object: '.#{$object__table}.#{$mod__striped}';
+$__object: 'tr:nth-child(even)';
+$__after-object: 'td';
+
+@include set_modificator(exclude-items($mod__status, default), background-color-darken, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table-important;
+$__before-object: '.#{$object__table}.#{$mod__striped} tr:nth-child(even)';
+$__object: 'td';
+$__after-object: '';
+
+@include set_modificator(exclude-items($mod__status, default), background-color-darken, border-color-darken, color-invert);
+
+
+
+
+
+
+$__inheritance: $object__table-notimportant;
+$__before-object: '.#{$object__table}.#{$mod__striped}.#{$mod__hovered}';
+$__object: 'tr:nth-child(even):hover';
+$__after-object: 'td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), border-color);
+
+
+$__inheritance: $object__table-notimportant;
+$__before-object: '';
+$__object: '.#{$object__table}.#{$mod__striped}.#{$mod__hovered}';
+$__after-object: 'tr:nth-child(even):hover td';
+
+@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), background-color, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table;
+$__before-object: '.#{$object__table}.#{$mod__striped}.#{$mod__hovered}';
+$__object: 'tr:nth-child(even):hover';
+$__after-object: 'td';
+
+@include set_modificator(exclude-items($mod__status, default), background-color, border-color-darken, color-invert);
+
+
+$__inheritance: $object__table-important;
+$__before-object: '.#{$object__table}.#{$mod__striped}.#{$mod__hovered} tr:nth-child(even):hover';
+$__object: 'td';
+$__after-object: '';
+
+@include set_modificator(exclude-items($mod__status, default), background-color, border-color-darken, color-invert);

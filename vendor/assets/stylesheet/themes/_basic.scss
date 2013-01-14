@@ -1,0 +1,330 @@
+// ======================================================================================================== \\
+//
+// ----------------------------------------------- %RULES% ---------------------------------------------- \\
+//
+// ======================================================================================================== \\
+// 
+// Variable naming
+// $type__object-modificator__(subobject-)cssrule
+// $object__table__cell-padding
+// $object__popover__content-background
+// $theme__line-height
+// $modificator__top
+//
+// ======================================================================================================== \\
+
+$theme__font-size: 14px;
+$theme__line-height: 16px;
+$theme__color: #333;
+$theme__background-color: #fff;
+$theme__font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+
+
+// ======================================================================================================== \\
+//
+// ----------------------------------------------- %TYPOGRAPHY% ---------------------------------------------- \\
+//
+// ======================================================================================================== \\
+
+$theme__header-font-family: 'Lucida Grande';
+
+// --------------------- %blockquote% ---------------------
+$theme__blockquote-padding: 10px;
+$theme__blockquote-margin-bottom: 10px;
+$theme__blockquote-border: 4px solid #eee;
+$theme__blockquote__sign-color: #999;
+
+// --------------------- %descriptions% ---------------------
+$theme__description-margin: 0 0 15px 0;
+$theme__description-line-height: $theme__line-height + 5px;
+$theme__description__defenition-margin-left: 15px;
+$theme__description__defenition__inline-width: 120px;
+
+// --------------------- %lists% ---------------------
+$theme__list-margin-left: 20px;
+$theme__list-margin: 0 0 0 $theme__list-margin-left;
+$theme__list-line-height: $theme__line-height + 5px;
+
+
+
+// ======================================================================================================== \\
+//
+// ----------------------------------------------- %OBJECTS% ---------------------------------------------- \\
+//
+// ======================================================================================================== \\
+
+// ------------ Section
+$object__section: -section;
+$object__section-margin-bottom: 15px;
+$object__section-margin: 0 0 $object__section-margin-bottom 0;
+
+// ------------ Article
+$object__article: -article;
+$object__article-margin-bottom: 35px;
+
+// ------------ Container
+$object__container: -container;
+
+// ------------ Column
+$object__column: -col;
+$object__column-quantity: 12;
+$object__column-width: 70px;
+$object__column-offset: #{$object__column}-offset;
+$object__column__gutter-width: 30px;
+
+// ------------ Row
+$object__row: -row;
+$object__row-width: $object__column-quantity * $object__column-width  +  $object__column-quantity * $object__column__gutter-width;
+
+$object__row-fluid: #{$object__row}-fluid;
+$object__row-fluid-width: 100%;
+$object__row-fluid__column-width: $object__column-width / $object__row-width * 100%;
+$object__row-fluid__column__gutter-width: $object__column__gutter-width / $object__row-width * 100%;
+
+// ------------ Form
+$object__form: -form;
+$object__form__row: #{$object__form}-row;
+$object__form__group: #{$object__form}-group;
+$object__form__field: #{$object__form}-field;
+$object__form__field-border-width: 3px;
+$object__form__field__placeholder: #{$object__form__field}-placeholder;
+$object__form__field__help: #{$object__form__field}-help;
+$object__form__field__help-color: #666;
+$object__form__field__row: #{$object__form__field}-row;
+$object__form__input-border-width: 1px;
+$object__form__input-shadow: 0 0 ;
+
+// ------------ Table
+$object__table: -table;
+$object__table-border-width: 1px;
+
+// ------------ Button
+$object__button: -btn;
+// $object__button-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$object__button-font-weight: 300;
+$object__button-border-width: 0;
+$object__button-border-radius: 3px;
+$object__button-shadow: 0px 1px 2px rgba(0,0,0,.2), 0px 1px 2px rgba(0,0,0,.2), 0 4px 4px rgba(0,0,0,.05), 0 6px 6px rgba(0,0,0,.1), inset 0 -4px 4px rgba(0,0,0,.05);
+$object__button-hover-shadow: 1px 1px 2px rgba(0,0,0,.2), -1px 1px 2px rgba(0,0,0,.2), 0 4px 4px rgba(0,0,0,.05), 0 6px 6px rgba(0,0,0,.1);
+$object__button-active-shadow: 0 1px 2px rgba(0,0,0,.4), inset 0 -15px 15px rgba(0,0,0,.1);
+
+// ------------ Group
+$object__group: -group;
+$object__group__appendix: #{$object__group}-appendix;
+$object__group__appendix-border-width: 1px;
+
+// ------------ Icon
+$object__icon: -icon;
+
+// ------------ Example if icon is sprite
+
+// $object__icon-width: 14px;
+// $object__icon-height: 14px;
+
+// $object__icon-colors: 		default									light;
+// $object__icon-colors-paths: '../images/icons/glyphicons_halflings.png' '../images/icons/glyphicons_halflings_white.png';
+
+// $object__icon-cols: 20;
+// $object__icon-cols-delta: 24px;
+// $object__icon-rows: 7;
+// $object__icon-rows-delta: 24px;
+// $object__icon-list: 		glass 				music 		search 		envelope	heart 			star 		star-empty		user			film 			th-large 		th 						th-list 				ok 					remove 				zoom-in 		zoom-out 		off 			signal 			cog 				trash
+// 							home 				file 		time 		road 		download-alt	download 	upload			inbox			play-cycle		repeat 			refresh					list-alt 				lock 				flag 				headphones		volume-off 		volume-down		volume-up		qr-code				barcode
+// 							tag 				tags 		book		bookmark	print 			camera		font 			bold			italic 			text-height		text-width				align-left				align-center 		align-right			align-justify	list 			indent-left		indent-right	facetime-video		picture
+// 							pencil				map-maker	adjust		tint 		edit 			share		check			move 			step-backward	fast-backward	backward 				play 					pause				stop 				foward 			fast-foward		step-foward		eject			chevron-left 		chevron-right
+// 							plus-sign			minus-sign	remove-sign	ok-sign		question-sign	info-sign	screenshot		remove-circle	ok-circle		ban-circle		arrow-left				arrow-right				arrow-up			arrow-down 			share-alt		resize-full		resize-small	plus 			minus 				asterisk
+// 							exclamation-sign	gift 		leaf 		fire 		eye-open 		eye-close 	warning-sign	plane 			calendar		random 			comment 				magnet 					chevron-up 			chevron-down 		retweet 		shopping-cart 	folder-close 	folder-open 	resize-vertical 	resize-horizontal
+// 							hdd 				bullhorn 	bell 		certificate thumbs-up		thumbs-down hand-right		hand-left 		hand-up 		hand-down 		circle-arrow-right		circle-arrow-left		circle-arrow-up		circle-arrow-down 	globe			wrench 			tasks 			filter 			briefcase 			fullscreen;
+
+$font-path: '../fonts';
+
+$object__icon__names: 	glass 	music 	search 	envelope 	heart 	star 	star-empty 	user 	film 	th-large 	th 		th-list ok 		remove 	zoom-in zoom-out 	off 	signal 	cog 	trash 	home 	file 	time 	road 	download-alt 	download 	upload 	inbox 	play-circle repeat 	refresh list-alt 	lock 	flag 	headphones 	volume-off 	volume-down volume-up 	qrcode 	barcode tag tags 	book 	bookmark 	print 	camera 	font 	bold 	italic 	text-height text-width 	align-left 	align-center 	align-right align-justify 	list 	indent-left indent-right facetime-video picture pencil 	map-marker 	adjust 	tint 	edit 	share 	check 	move 	step-backward 	fast-backward 	backward 	play 	pause 	stop 	forward fast-forward  	step-forward  	eject	chevron-left	chevron-right	plus-sign	minus-sign	remove-sign   ok-sign       question-sign 	info-sign	screenshot	remove-circle	ok-circle	ban-circle arrow-left 	arrow-right arrow-up 	arrow-down 	share-alt 	resize-full resize-small 	plus 	minus 	asterisk 	exclamation-sign 	gift 	leaf 	fire 	eye-open 	eye-close 	warning-sign 	plane 	calendar random comment magnet chevron-up chevron-down retweet shopping-cart folder-close folder-open resize-vertical resize-horizontal bar-chart     twitter-sign  facebook-sign camera-retro  key           cogs          comments      thumbs-up     thumbs-down   star-half     heart-empty   signout       linkedin-sign pushpin       external-link signin         trophy         github-sign    upload-alt     lemon          phone          check-empty    bookmark-empty phone-sign     twitter        facebook       github         unlock         credit-card    rss           hdd                bullhorn           bell               certificate        hand-right         hand-left          hand-up            hand-down          circle-arrow-left  circle-arrow-right circle-arrow-up    circle-arrow-down  globe              wrench             tasks             filter    briefcase fullscreen group         link          cloud         beaker        cut           copy          paper-clip    save          sign-blank    reorder       list-ul       list-ol       strikethrough underline     table        magic            truck            pinterest        pinterest-sign   google-plus-sign google-plus      money            caret-down       caret-up         caret-left       caret-right      columns          sort             sort-down        sort-up         envelope-alt linkedin     undo         legal        dashboard    comment-alt  comments-alt bolt         sitemap      umbrella     paste       user-md;
+$object__icon__content: "\f000" "\f001" "\f002" "\f003" 	"\f004" "\f005" "\f006" 	"\f007" "\f008" "\f009" 	"\f00a" "\f00b" "\f00c" "\f00d" "\f00e" "\f010" 	"\f011" "\f012" "\f013" "\f014" "\f015" "\f016" "\f017" "\f018" "\f019" 		"\f01a" 	"\f01b" "\f01c" "\f01d" 	"\f01e" "\f021" "\f022" 	"\f023" "\f024" "\f025" 	"\f026" 	"\f027" 	"\f028" 	"\f029" "\f02a" "\f02b" 	"\f02c" "\f02d" 	"\f02e" "\f02f" "\f030" "\f031" "\f032" "\f033" 	"\f034" 	"\f035" 	"\f036" 		"\f037" 	"\f038" 		"\f039" "\f03a" 	"\f03b" 	 "\f03c" 		"\f03d" "\f03e" "\f040" 	"\f041" "\f042" "\f043" "\f044" "\f045" "\f046" "\f047" 		"\f048" 		"\f049" 	"\f04a" "\f04b" "\f04c" "\f04d" "\f04e" 		"\f050" 		"\f051" "\f052" 		"\f053" 		"\f054" 	"\f055" 	"\f056" 	"\f057" 		"\f058" 		"\f059" 	"\f05a" 	"\f05b" 		"\f05c" 	"\f05d"		"\f05e" 	"\f060" 	"\f061" 	"\f062" 	"\f063" 	"\f064" 	"\f065" 		"\f066" "\f067" "\f068" 	"\f069" 			"\f06a" "\f06b" "\f06c" "\f06d" 	"\f06e" 	"\f070" 		"\f071" "\f072" 	"\f073" "\f074" "\f075" "\f076" "\f077" "\f078" "\f079" "\f07a" "\f07b" "\f07c" "\f07d" "\f07e" "\f080" "\f081" "\f082" "\f083" "\f084" "\f085" "\f086" "\f087" "\f088" "\f089" "\f08a" "\f08b" "\f08c" "\f08d" "\f08e" "\f090" "\f091" "\f092" "\f093" "\f094" "\f095" "\f096" "\f097" "\f098" "\f099" "\f09a" "\f09b" "\f09c" "\f09d" "\f09e" "\f0a0" "\f0a1" "\f0a2" "\f0a3" "\f0a4" "\f0a5" "\f0a6" "\f0a7" "\f0a8" "\f0a9" "\f0aa" "\f0ab" "\f0ac" "\f0ad" "\f0ae" "\f0b0" "\f0b1" "\f0b2" "\f0c0" "\f0c1" "\f0c2" "\f0c3" "\f0c4" "\f0c5" "\f0c6" "\f0c7" "\f0c8" "\f0c9" "\f0ca" "\f0cb" "\f0cc" "\f0cd" "\f0ce" "\f0d0" "\f0d1" "\f0d2" "\f0d3" "\f0d4" "\f0d5" "\f0d6" "\f0d7" "\f0d8" "\f0d9" "\f0da" "\f0db" "\f0dc" "\f0dd" "\f0de" "\f0e0" "\f0e1" "\f0e2" "\f0e3" "\f0e4" "\f0e5" "\f0e6" "\f0e7" "\f0e8" "\f0e9" "\f0ea" "\f200";
+
+$object__icon__social: #{$object__icon}-social;
+$object__icon__social-names: 		facebook	googleplus	twitter		linkedin	dropbox		evernote	forrst		dribbble		cloudapp	github		spotify		readitlater		soundcloud		tumblr		smashingmagazine		itunes		appstore		macappstore		androidmarket	pinterest		quora		lanyrd		paypal		amazon		skype	lastfm		yelp	forsquare	klout	wikipedia	disqus	intensedebate	google		gmail	vimeo	scribd	youtube		wordpress	songkick	posterous	eventbrite	flattr	plancast	ceo		iefive	meetup		openid		htmlsix	parents		guest	creativecommonlicence	rss		chrome		eventasaurus	weibo	plurk	grooveshark		blogger		viadeo		podcast		fivehundredpx	bitcoin		ninetyninedesigns	pinboard	stumble		myspace		windowslive		eventful	xing	flickr	delicious	googleplay	opentable	digg	reddit	angellist	instagram	steam		vkontakte	appnet	drupal	identica	saveforlater	adobeacrobat	bitbucket	buffer	lego	login	hackernews	stackoverflow	lkdto	callphone	sendmessage		addtocalendar	addtocart	print	stripe	dwolla;
+$object__icon__social-content: 		'f' 		'+' 		'T' 		'L' 		'd' 		'E' 		':'			'D' 			'c' 		"è"			'='			'I'				's'				't'			'*'						'i'			'A'				'^'				'&'				'1'				'q'			'-'			'$'			'a'			'S'		'l'			'y'		'4'			'K'		','			'Q'		'{'				'G'			'm'		'V'		'}'		'U'			'w'			'k'			'~'			'|'			'%'		'P'			'Y'		'6'		'M'			'o'			'5'		'"'			'?'		'C'						'R'		'['			'v'				'J'		'j'		'8'				'B'			'H'			'`'			'0'				'2'			'9'					'n'			'/'			'_'			'W'				"'"			'X'		'F'		'#'			'h'			'Ç'			';'		'>'		'Ö'			'Ü'			'b'			'N'			'á'		'ä'		'â'			'ç'				'ã'				'é'			'å'		'ê'		'ë'		'í'			'ì'				'î'		'7'			']'				'.'				'É'			'Ñ'		'£'		'à';
+
+// ------------ Caret
+$object__caret: -caret;
+
+// ------------ Tabs
+$object__tabs: -tabs;
+$object__tabs-border-width: 0;
+$object__tabs-border-radius: 3px;
+
+// ------------ Badges
+$object__badge: -badge;
+$object__badge-border-radius: 15px;
+
+// ------------ Label < Badges
+$object__label: -label;
+$object__label-border-radius: 3px;
+
+// ------------ Dropdown
+$object__dropdown: -dropdown;
+$object__dropdown-border-width: 0;
+$object__dropdown-border-radius: 5px;
+$object__dropdown-background-color: #fff;
+$object__dropdown-min-width: 150px;
+$object__dropdown-min-height: 100px;
+$object__dropdown-max-width: 300px;
+$object__dropdown-max-height: 1000px;
+$object__dropdown-shadow: 0 4px 10px rgba(0,0,0,.2);
+$object__dropdown__header: #{$object__dropdown}-header;
+$object__dropdown__header-padding: 10px;
+$object__dropdown__content: #{$object__dropdown}-content;
+$object__dropdown__content-padding: 10px;
+
+// ------------ Modal
+$object__modal: -modal;
+$object__modal-border-width: 0;
+$object__modal-border-radius: 5px;
+$object__modal-min-height: 300px;
+$object__modal-min-width: 300px;
+$object__modal-shadow: 0 4px 20px rgba(0,0,0,.1);
+$object__modal__header: #{$object__modal}-header;
+$object__modal__header-padding: 10px;
+$object__modal__content: #{$object__modal}-content;
+$object__modal__content-padding: 10px;
+// ------------ Shader
+$object__shader: -shader;
+$object__shader-background: rgba(0,0,0,.7);
+// ------------ Closer
+$object__closer: -closer;
+$object__closer-background: rgba(255,255,255,1);
+
+// ------------ Arrow
+$object__arrow: -arrow;
+$object__arrow-size: 8px;
+
+// ------------ Tooltip
+$object__tooltip: -tooltip;
+$object__tooltip-border-radius: 3px;
+$object__tooltip__arrow-size: 4px;
+$object__tooltip-shadow: 0 0 6px rgba(0,0,0,.2);
+
+// ------------ Menu
+$object__menu: -menu;
+$object__menu__submenu: #{$object__menu}-sub;
+$object__menu__help: #{$object__menu}-help;
+$object__menu__separator: #{$object__menu}-separator;
+
+// ------------ Toolbar
+$object__toolbar: -toolbar;
+$object__toolbar-border-width: 1px;
+
+// ------------ Carousel
+$object__carousel: -carousel;
+$object__carousel-shadow: 0 2px 4px rgba(0,0,0,.3);
+$object__carousel__item: #{$object__carousel}-item;
+$object__carousel__arrow-left: #{$object__carousel}-arrow-left;
+$object__carousel__arrow-right: #{$object__carousel}-arrow-right;
+$object__carousel__caption: #{$object__carousel}-caption;
+$object__carousel__caption__title: #{$object__carousel__caption}-title;
+$object__carousel__caption__text: #{$object__carousel__caption}-text;
+$object__carousel__navigation: #{$object__carousel}-nav;
+$object__carousel__navigation-shadow: inset 0 2px 1px rgba(0,0,0,.2), inset 0 -2px 7px rgba(0,0,0,.1);
+$object__carousel__navigation-size: 7px;
+
+// ------------ Progressbar
+$object__progressbar: -progress;
+$object__progressbar-border-radius: 50px;
+$object__progressbar-shadow: none;
+$object__progressbar__bar: #{$object__progressbar}-bar;
+$object__progressbar__bar-shadow: 0px 1px 2px rgba(0,0,0,.2), 0 4px 4px rgba(0,0,0,.05);
+$object__progressbar__globalBar: #{$object__progressbar__bar}-global;
+$object__progressbar__globalBar-shadow: $object__progressbar__bar-shadow;
+
+// ------------ Notify
+$object__notify: -notify;
+$object__notify-font-size: 85%;
+$object__notify-width: 300px;
+$object__notify-border-radius: 0;
+$object__notify-margin: 0;
+$object__notify__header: #{$object__notify}-header;
+$object__notify__header-padding: 7px 10px;
+$object__notify__content: #{$object__notify}-content;
+$object__notify__content-padding: 3px 10px 7px;
+$object__notify__container: #{$object__notify}-container;
+
+
+
+// ======================================================================================================== \\
+//
+// ----------------------------------------------- %MIXINS% ---------------------------------------------- \\
+//
+// ======================================================================================================== \\
+$mixin__float-right: mx-pull-right;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ======================================================================================================== \\
+//
+// ----------------------------------------------- %MODIFICATORS% ---------------------------------------------- \\
+//
+// ======================================================================================================== \\
+
+// ------------- Status
+$mod__status__disabled: disabled; // Use it in a list below
+$mod__status__unstyled: unstyled;
+
+$mod__status:							$mod__status__unstyled			default							error							success							info							warning							primary							dark						$mod__status__disabled;
+$mod__status-color:						$theme__color 					$theme__color 					red 							#3ec84c 						#64cfd9 						#EDB723 						#1b88d6							#6b6b6b						#ccc;						//color
+$mod__status-color-darken:				transparent						darken(#d9d9d9, 10%)			darken(#d96464, 10%)			darken(#3ec84c, 10%)			darken(#64cfd9, 10%)			darken(#d9ab64, 10%)			darken(#1b88d6, 10%)			darken(#6b6b6b, 5%)			darken(#d9d9d9, 10%);		//border-color-darken
+$mod__status-color-invert:				$theme__color 					$theme__color 					#fff 							#fff 							#fff 							#fff 							#fff							#fff						#ccc;						//color-invert
+$mod__status-border-color:				transparent						#d9d9d9							#d96464 						#3ec84c							#64cfd9							#d9ab64							darken(#1b88d6, 5%)				#6b6b6b						#d9d9d9; 					//border-color
+$mod__status-border-color-lighten:		transparent						lighten(#d9d9d9, 5%)			lighten(#d96464, 20%)			lighten(#3ec84c, 10%)			lighten(#64cfd9, 10%)			lighten(#d9ab64, 10%)			lighten(#1b88d6, 10%)			lighten(#6b6b6b, 20%)		lighten(#d9d9d9, 10%);		//border-color-lighten
+$mod__status-border-color-lightener:	transparent						lighten(#d9d9d9, 13%)			lighten(#d96464, 30%)			lighten(#3ec84c, 20%)			lighten(#64cfd9, 20%)			lighten(#d9ab64, 20%)			lighten(#1b88d6, 20%)			lighten(#6b6b6b, 40%)		lighten(#d9d9d9, 20%);		//border-color-lightener
+$mod__status-border-color-darken:		transparent						darken(#d9d9d9, 10%)			darken(#d96464, 10%)			darken(#3ec84c, 10%)			darken(#64cfd9, 10%)			darken(#d9ab64, 10%)			darken(#1b88d6, 10%)			darken(#6b6b6b, 5%)			darken(#d9d9d9, 10%);		//border-color-darken
+$mod__status-border-color-darkener:		transparent						darken(#d9d9d9, 25%)			darken(#d96464, 25%)			darken(#3ec84c, 25%)			darken(#64cfd9, 25%)			darken(#d9ab64, 25%)			darken(#1b88d6, 25%)			darken(#6b6b6b, 10%)		darken(#d9d9d9, 25%);		//border-color-darkener
+$mod__status-outline:					none							'0 0 10px rgba(100,207,217,1)'	'0 0 10px rgba(217,100,100,1)' 	'0 0 10px rgba(100,217,134,1)'	'0 0 10px rgba(100,207,217,1)'	'0 0 10px rgba(217,171,100,1)' 	'0 0 10px rgba(26,120,217,1)'	0 0 10px rgba(0,0,0,1)		none;						//outline
+$mod__status-background-color:			transparent						#fbfbfb		 					#da4a39							#3ec84c							#64cfd9							#EDB723							#1b88d6							#6b6b6b						lighten(#d9d9d9, 10%);		//background-color
+$mod__status-background-color-lighten:	transparent						lighten(#fbfbfb, 2%)			lighten(#da4a39, 10%)			lighten(#3ec84c, 10%)			lighten(#64cfd9, 10%)			lighten(#EDB723, 10%)			lighten(#1b88d6, 10%)			lighten(#6b6b6b, 10%)		lighten(#d9d9d9, 10%);		//background-color-lighten
+$mod__status-background-color-lightener:transparent						lighten(#fbfbfb, 4%)			lighten(#da4a39, 20%)			lighten(#3ec84c, 20%)			lighten(#64cfd9, 20%)			lighten(#EDB723, 20%)			lighten(#1b88d6, 20%)			lighten(#6b6b6b, 20%)		lighten(#d9d9d9, 10%);		//background-color-lightener
+$mod__status-background-color-darken:	transparent						darken(#fbfbfb, 5%)				darken(#da4a39, 5%)				darken(#3ec84c, 5%)				darken(#64cfd9, 5%)				darken(#EDB723, 5%)				darken(#1b88d6, 5%)				darken(#6b6b6b, 5%)			lighten(#d9d9d9, 10%);		//background-color-darken
+$mod__status-background-color-darkener:	transparent						darken(#fbfbfb, 10%)			darken(#da4a39, 10%)			darken(#3ec84c, 10%)			darken(#64cfd9, 10%)			darken(#EDB723, 10%)			darken(#1b88d6, 10%)			darken(#6b6b6b, 10%)		lighten(#d9d9d9, 10%);		//background-color-darkener
+$mod__status-text-shadow:				none							'0 1px 0 rgba(255,255,255,1)'	'0 -1px rgba(0,0,0,.3)'			'0 -1px rgba(0,0,0,.3)'			'0 -1px rgba(0,0,0,.3)'			'0 -1px rgba(0,0,0,.3)'			'0 -1px rgba(0,0,0,.3)'			'0 1px rgba(255,255,255,.1)'none;						//text-shadow
+$mod__status-shadow:					none							'0 4px 10px rgba(0,0,0,.3)'		'0 4px 10px rgba(0,0,0,.3)'		'0 4px 10px rgba(0,0,0,.3)'		'0 4px 10px rgba(0,0,0,.3)' 	'0 4px 10px rgba(0,0,0,.3)' 	'0 4px 10px rgba(0,0,0,.3)' 	'0 4px 10px rgba(0,0,0,.3)'	none;						//shadow
+
+
+// $mod__status-shadow:					none							'0 2px 2px rgba(0,0,0,.1)'		none							none							none							none							none;
+// $mod__status-shadow-long:				none							'0 6px 6px rgba(0,0,0,.05)'		none							none							none							none							none;
+
+
+
+// ------------- Status
+$mod__size:			tiny		small		default		big			huge;
+$mod__size-delta:	-4 			-2 			2 			4 			6;
+
+
+$mod__active: _active_;
+$mod__loading: _loading_;
+$mod__vertical: _vertical_;
+$mod__horizontal: _horizontal_;
+$mod__striped: _striped_;
+$mod__hovered: _hovered_;
+$mod__bordered: _bordered_;
+$mod__unclickable: _unclickable_;
+
+$mod__side-top: _top_;
+$mod__side-bottom: _bottom_;
+$mod__side-left: _left_;
+$mod__side-right: _right_;
+
+
+
+
+
+

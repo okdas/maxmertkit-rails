@@ -1,0 +1,131 @@
+@include init_modificator-status($object__button);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+button,
+.#{$object__button},
+input[type="button"] {
+	@extend %__object;
+
+	// font-family: $object__button-font-family;
+	// letter-spacing: 1px;
+	// font-weight: $object__button-font-weight;
+	text-decoration: none;
+	cursor: pointer;
+	border-width: $object__button-border-width;
+	border-style: solid;
+	@include border-radius( $object__button-border-radius );
+	@include box-shadow( $object__button-shadow );
+
+
+	@include set_modificator($mod__size, padding-object, font-size, line-height);
+	@include set_modificator($mod__status, color-invert, border-color, gradient-vertical, text-shadow);
+}
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: 'button' 'input[type="button"]' '.#{$object__button}';
+$__after-object: '';
+@include set_modificator($mod__status, color-invert, border-color, gradient-vertical, text-shadow);
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: append-list('button' 'input[type="button"]' '.#{$object__button}', '', ':hover');
+$__after-object: '';
+@include set_modificator($mod__status, gradient-vertical-darken);
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: append-list('button' 'input[type="button"]' '.#{$object__button}', '', ':active');
+$__after-object: '';
+@include set_modificator($mod__status, gradient-vertical-darkener);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: append-list('button' 'input[type="button"]' '.#{$object__button}', '', '.#{$mod__active}');
+$__after-object: '';
+@include set_modificator($mod__status, gradient-vertical-darkener);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: 'button.#{$mod__loading}' 'input[type="button"].#{$mod__loading}' '.#{$object__button}.#{$mod__loading}';
+$__after-object: '';
+@include set_modificator(exclude-items($mod__status,$mod__status__disabled, default), loading);
+@include set_modificator(only-items($mod__status,$mod__status__disabled, default), loading-dark);
+
+
+button,
+.#{$object__button},
+input[type="button"] {
+	
+
+	&:hover {
+		@include box-shadow( $object__button-hover-shadow );
+	}
+
+
+	&:active,
+	&.#{$mod__active} {
+		@include box-shadow( $object__button-active-shadow );
+	}
+
+	&.-#{$mod__status__disabled}-,
+	&:hover.-#{$mod__status__disabled}-,
+	&:active.-#{$mod__status__disabled}-,
+	&.#{$mod__active}.-#{$mod__status__disabled}- {
+		@include box-shadow(none);
+		text-decoration: none!important;
+		cursor: default;
+	}
+
+
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: this;
+	$__after-object: '';
+	&.-#{$mod__status__unstyled}-,
+	&:hover.-#{$mod__status__unstyled}-,
+	&:active.-#{$mod__status__unstyled}-,
+	&.#{$mod__active}.-#{$mod__status__unstyled}-,
+	&.-#{$mod__status__disabled}-.-#{$mod__status__unstyled}- {
+		@include box-shadow(none);
+		background-color: transparent!important;
+		background-image: none!important;
+		filter: none!important;
+		border-color: transparent!important;
+		@include text-shadow( none );
+		@include set_modificator($mod__status, color);
+	}
+
+	&.-#{$mod__status__unstyled}- {
+		text-decoration: underline;
+	}
+
+	&:hover.-#{$mod__status__unstyled}-,
+	&:active.-#{$mod__status__unstyled}-,
+	&.#{$mod__active}.-#{$mod__status__unstyled}- {
+		text-decoration: none;
+	}
+
+
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: this;
+	$__after-object: '';
+
+	&.#{$mod__unclickable},
+	&.#{$mod__unclickable}:hover,
+	&.#{$mod__unclickable}:active {
+		@include set_modificator(exclude-items($mod__status,$mod__status__disabled), color-invert, border-color, gradient-vertical, text-shadow);
+		@include set_modificator(only-items($mod__status,$mod__status__disabled), color-invert, border-color, background-color, text-shadow);
+		@include box-shadow( $object__button-shadow );
+		cursor: default;
+	}
+
+}

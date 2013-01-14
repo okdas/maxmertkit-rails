@@ -1,0 +1,240 @@
+// // ================================ %BODY% ================================ \\
+body {
+	font: $theme__font-size $theme__font-family;
+	line-height: $theme__line-height;
+	color: $theme__color;
+	background-color: $theme__background-color;
+	// -webkit-font-smoothing: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+// input {
+// 	font: $theme-font-size $theme-font-family;
+// }
+
+section,
+.#{$object__section} {
+	margin: #{$object__section-margin};
+}
+
+article,
+.#{$object__article} {
+	margin-bottom: $object__article-margin-bottom;
+}
+
+p {
+	margin-bottom: $object__section-margin-bottom / 2;
+}
+
+
+
+
+
+// ================================ %HEADERS% ================================ \\
+@function __get-header-size( $number ) {
+	@return floor($theme__font-size + (abs($number - 6) * 4.5));
+}
+
+%__init-headers {
+	margin-top: 0;
+	font-family: $theme__header-font-family;
+}
+
+@for $i from 1 through 6 {
+	h#{$i} {
+		@extend %__init-headers;
+
+		font-size: __get-header-size( $i );
+		line-height: __get-header-size( $i ) + $i - 6;
+		margin-bottom: __get-header-size( $i ) / 2;
+	}
+}
+
+
+
+
+
+
+// ================================ %TYPOGRAPHY% ================================ \\
+ 
+small {
+	font-size: 85%;
+}
+
+strong {
+	font-weight: bold ;
+}
+
+em {
+	font-style: normal;
+}
+
+abbr {
+	border-bottom: 1px dotted;
+	&[title] {
+		cursor: help;
+	}
+}
+
+// --------------------- %blockquote% ---------------------
+blockquote {
+	padding: 0 0 0 $theme__blockquote-padding;
+	border-left: $theme__blockquote-border;
+	margin:0 0 $theme__blockquote-padding;
+	font-weight: 300;
+	small {
+		color: $theme__blockquote__sign-color;
+		&:before
+		{
+			content: '\2014 \00A0';
+		}
+	}
+
+	&.#{$mixin__float-right}
+	{
+		float: right;
+		padding: 0 $theme__blockquote-padding 0 0;
+		border-left: none;
+		border-right: $theme__blockquote-border;
+		text-align: right;
+	}
+}
+
+// --------------------- %address% ---------------------
+address {
+	font-style: normal ;
+	margin: 0 0 $object__section-margin-bottom 0;
+}
+
+// --------------------- %lists% ---------------------
+ul, ol {
+	margin: $theme__list-margin;
+	padding: 0;
+	line-height: $theme__list-line-height;
+
+	// &.#{$modificator-type-unstyled}
+	// {
+	// 	list-style: none;
+	// 	margin-left: $theme__list-margin-left / 2;
+	// }
+
+	ul, ol
+	{
+		margin-bottom: 0;
+	}
+}
+
+// --------------------- %descriptions% ---------------------
+dl {
+	margin: $theme__description-margin;
+	line-height: $theme__description-line-height;
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin-left: $theme__description__defenition-margin-left;
+	}
+
+	&.#{$mod__horizontal}
+	{
+		dt {
+			width: $theme__description__defenition__inline-width;
+			float: left;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			text-align: right;
+		}
+
+		dd {
+			margin-left: $theme__description__defenition__inline-width + 10px;
+		}
+	}
+}
+
+
+
+// ================================ %GRID% ================================ \\
+
+@function __get-column-width( $column-quantity: $object__column-quantity, $column-width: $object__column-width, $gutter-width: $object__column__gutter-width ) {
+	@return $column-width * $column-quantity + $gutter-width * ( $column-quantity - 1 );
+}
+
+@function __get-column-offset-width( $column-quantity: $object__column-quantity, $column-width: $object__column-width, $gutter-width: $object__column__gutter-width ) {
+	@return $column-width * $column-quantity + $gutter-width * ( $column-quantity + 1 );
+}
+
+.#{$object__container} {
+	width: $object__row-width;
+	margin: 0 auto;
+}
+
+.#{$object__row} {
+	margin-left: -$object__column__gutter-width;
+	width: $object__row-width;
+	@include clearfix;
+
+	[class^='#{$object__column}'] {
+		float: left;
+		margin-left: $object__column__gutter-width;
+	}
+
+	@for $i from 1 through $object__column-quantity {
+		& > .#{$object__column}#{$i} {
+			width: __get-column-width($i);
+		}
+
+		& > .#{$object__column-offset}#{$i} {
+			margin-left: __get-column-offset-width($i);
+		}
+	}
+}
+
+.#{$object__row-fluid} {
+	width: $object__row-fluid-width + $object__row-fluid__column__gutter-width;
+	margin-left: -$object__row-fluid__column__gutter-width;
+	@include clearfix;
+
+	[class^='#{$object__column}'] {
+		float: left;
+		margin-left: $object__row-fluid__column__gutter-width;
+	}
+
+	@for $i from 1 through $object__column-quantity {
+		& > .#{$object__column}#{$i} {
+			width: __get-column-width($i, $object__row-fluid__column-width, $object__row-fluid__column__gutter-width);
+		}
+
+		& > .#{$object__column-offset}#{$i} {
+			margin-left: __get-column-offset-width($i, $object__row-fluid__column-width, $object__row-fluid__column__gutter-width);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

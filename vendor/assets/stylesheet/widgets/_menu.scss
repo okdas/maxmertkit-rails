@@ -1,0 +1,283 @@
+@include init_modificator-status($object__menu);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__menu} {
+	margin: 0;
+	list-style: none;
+
+	li {
+		display: inline-block;
+		a {
+			@extend %__object;
+			
+			cursor: pointer;
+		}
+		
+		position: relative;
+
+		& > .#{$object__dropdown} {
+			display: none;
+			position: absolute;
+		}
+	}
+
+	&.#{$mod__active} {
+		li {
+			a {
+				border-width: 1px;
+				border-style: solid;
+				border-color: transparent;
+			}
+
+			&:hover > .#{$object__dropdown} {
+				display: block;
+			}
+
+			.#{$object__dropdown} {
+				border-width: 1px;
+				border-style: solid;
+				border-color: transparent;
+				@include border-radius( 0 );
+				margin-top: -1px;
+				@include box-shadow( 0 2px 4px rgba(0,0,0,.2) );
+			}
+		}
+	}
+
+	&.-#{$mod__status__disabled}-,
+	li.-#{$mod__status__disabled}- {
+		a:after {
+			display: none!important;
+		}
+
+		a:hover, a {
+			background: transparent!important;
+			border-color: transparent!important;
+			text-shadow: none!important;
+			cursor: default;
+		}
+		.#{$object__dropdown} {
+			display: none!important;
+		}
+	}
+}
+
+.#{$object__dropdown} .#{$object__menu},
+.#{$object__menu}.#{$mod__vertical} {
+	width: 100%;
+	margin: $object__dropdown-border-radius 0;
+
+	li {
+		display: block;
+		a {
+			display: block;
+		}
+
+		&.#{$object__menu__separator} {
+			height: 0;
+			width: 100%;
+			border-bottom:1px solid rgba(255,255,255,1);
+			border-top:1px solid rgba(0,0,0,.1);
+			margin: 4px 0;
+		}
+
+		&.#{$object__menu__submenu} {
+			& > a {
+				padding-right: 10px;
+
+				&:after {
+					@extend %__object;
+					display: inline-block;
+					float: right;
+					content: ' ';
+
+					position: absolute;
+					border-width: 5px;
+					border-style: solid;
+					border-right-style: none;
+					border-top-color: transparent!important;
+					border-bottom-color: transparent!important;
+					right: 5px;
+					top: 50%;
+					margin-top: -5px;
+				}
+			}
+
+			& > .#{$object__dropdown} {
+				z-index: 1;
+				min-height: auto;
+				left: 100%;
+				@include opacity( 0 );
+				top: -$object__dropdown-border-radius;
+			}
+
+			&.#{$mod__side-top} > .#{$object__dropdown} {
+				top: auto;
+				bottom: -$object__dropdown-border-radius;
+			}
+
+			&.#{$mod__side-left} > .#{$object__dropdown} {
+				left: auto;
+				// margin-left: 0\9;
+				// margin-right: -1px\9;
+				right: 100%;
+			}
+
+			&:hover {
+				& > .#{$object__dropdown} {
+					display: block;
+					@include opacity( 1 );
+				}
+			}
+		}
+
+		a .#{$object__menu__help} {
+			float: right;
+			margin: 0 0 0 13px;
+			font-weight: 200;
+			opacity: .3;
+		}
+
+		a:hover {
+			.#{$object__menu__help}{
+				opacity: .7;
+			}
+
+			// [class*='#{$object__icon}'],
+			// [class^='#{$object__icon}'],
+			// .#{$object__icon} {
+			// 	@extend .-icon-light-;	
+			// }
+		}
+	}
+
+	& + .#{$object__menu} {
+		margin-top: -$object__dropdown-border-radius;
+		min-height: auto;
+	}
+}
+
+$__inheritance: object;
+$__before-object: '.#{$object__menu} >';
+$__object: 'li';
+$__after-object: '> a';
+@include set_modificator($mod__size, padding-object, font-size, line-height);
+$__inheritance: $object__menu;
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), color);
+@include set_modificator(only-items($mod__status, $mod__status__disabled), color-invert, background-color);
+
+$__inheritance: object;
+$__before-object: '.#{$object__menu} >';
+$__object: 'li.#{$mod__loading}';
+$__after-object: '> a';
+@include set_modificator($mod__status, loading-dark);
+
+
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu} >';
+$__object: 'li:hover';
+$__after-object: '> a';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darken, color-invert, text-shadow);
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu} >';
+$__object: 'li.#{$mod__active}';
+$__after-object: '> a';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darkener, color-invert, text-shadow);
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu} >';
+$__object: 'li';
+$__after-object: '> a:active';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darkener, color-invert, text-shadow);
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu} >';
+$__object: 'li.#{$object__menu__submenu}';
+$__after-object: '> a:after';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color-darken);
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu} ';
+$__object: 'li.#{$object__menu__submenu}:hover';
+$__after-object: '> a:after';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color-darkener);
+
+
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: 'li a';
+@include set_modificator($mod__size, padding-object, font-size, line-height);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: '> li > a';
+@include set_modificator(only-items($mod__status, $mod__status__disabled), color-invert);
+// @include set_modificator(exclude-item($mod__status, primary), color);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: 'li:hover > a';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darken, color-invert, text-shadow);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: '> li.#{$mod__active} > a';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darkener, color-invert, text-shadow);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: '> li > a:active';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darkener, color-invert, text-shadow);
+
+$__inheritance: $object__menu;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: '> li.#{$object__menu__submenu} > a:after';
+@include set_modificator(exclude-item($mod__status, primary, $mod__status__disabled), border-color-darken);
+
+$__inheritance: $object__menu;
+$__before-object: '';
+$__object: '.#{$object__menu}';
+$__after-object: ' li.#{$object__menu__submenu}:hover > a:after';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color-darkener);
+
+
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}.#{$mod__active}';
+$__after-object: '> li:hover > a';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__menu}.#{$mod__active}';
+$__after-object: 'li:hover .#{$object__dropdown}';
+@include set_modificator(only-items($mod__status, $mod__status__unstyled, default), border-color);
+
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu}.#{$mod__active} >';
+$__object: 'li:hover';
+$__after-object: '> a';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), border-color);
+
+$__inheritance: $object__menu;
+$__before-object: '.#{$object__menu}.#{$mod__active}';
+$__object: 'li:hover';
+$__after-object: '.#{$object__dropdown}';
+@include set_modificator(only-items($mod__status, $mod__status__unstyled, default), border-color);

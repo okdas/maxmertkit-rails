@@ -1,0 +1,211 @@
+@include init_modificator-status($object__tabs);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__tabs} {
+	@include clearfix;
+	margin: 0;
+	list-style: none;
+
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+
+	&.#{$object__section} {
+		margin: #{$object__section-margin};
+	}
+
+	li {
+		display: inline-block;
+		vertical-align: bottom;
+		float: #{'left!!important'};
+
+		a{
+			@extend %__object;
+
+			display: inline-block;
+			vertical-align: bottom;
+
+			@include border-radius( $object__tabs-border-radius $object__tabs-border-radius 0 0 );
+			border-width: $object__tabs-border-width;
+			border-style: solid;
+			border-bottom-style: none;
+			border-color: transparent;
+
+			cursor: pointer;
+		}
+
+		&.-#{$mod__status__disabled}- {
+			a {
+				border-color: transparent!important;
+				cursor: default!important;
+				background-color: transparent!important;
+				@include box-shadow( none!important );
+			}
+		}
+
+	}
+
+	&.-#{$mod__status__disabled}- {
+		li a {
+			border-color: transparent!important;
+			background-color: transparent!important;
+			cursor: default!important;
+			@include box-shadow( none!important );
+		}
+	}
+
+	&.#{$mod__vertical} {
+		display: inline-block;
+		border-bottom-width: 0;
+		border-right-width: 1px;
+		border-right-style: solid;
+		float: #{'left!!important'};
+
+		li {
+			display: block;
+			text-align: right;
+			float: #{'none!!important'};
+			clear: #{'both!!important'};
+
+			& + li {
+				margin-top: 2px;
+			}
+
+			a {
+				@include border-radius( $object__tabs-border-radius 0 0 $object__tabs-border-radius );
+				text-align: #{'right!!important'};
+			}
+		}
+
+		&.#{$mod__side-right} {
+			border-right-width: 0;
+			border-left-width: 1px;
+			border-left-style: solid;
+			float: #{'right!!important'};
+
+			li {
+				display: block;
+				text-align: left;
+
+				a {
+					@include border-radius( 0 $object__tabs-border-radius $object__tabs-border-radius 0 );
+					float: #{'none!!important'};
+				}
+			}
+		}
+	}
+
+	&.#{$mod__side-bottom} {
+		border-bottom-width: 0;
+		border-top-width: 1px;
+		border-top-style: solid;
+
+		li a {
+			@include border-radius( 0 0 $object__tabs-border-radius $object__tabs-border-radius );
+			vertical-align: top;
+		}
+	}
+
+}
+
+$__inheritance: object;
+$__before-object: '.#{$object__tabs}';
+$__object: 'li';
+$__after-object: 'a';
+@include set_modificator($mod__size, padding-huge, font-size, line-height);
+$__inheritance: $object__tabs;
+@include set_modificator($mod__status, color);
+
+$__inheritance: $object__tabs;
+$__before-object: '.#{$object__tabs}';
+$__object: 'li:active' 'li.#{$mod__active}';
+$__after-object: 'a';
+@include set_modificator($mod__status, color-invert, border-color-darken, background-color-darkener, text-shadow);
+
+
+$__inheritance: $object__tabs;
+$__before-object: '.#{$object__tabs}';
+$__object: 'li';
+$__after-object: '> a:hover';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darken, border-color-darken, color-invert, text-shadow);
+
+$__inheritance: object;
+$__before-object: '.#{$object__tabs}';
+$__object: 'li.#{$mod__loading}';
+$__after-object: 'a';
+@include set_modificator($mod__status, loading);
+
+
+
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__tabs}';
+$__after-object: '';
+@include set_modificator($mod__status, border-color);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__tabs}';
+$__after-object: 'li a';
+@include set_modificator($mod__status, color);
+@include set_modificator($mod__size, padding-huge, font-size, line-height);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__tabs}';
+$__after-object: 'li a:hover';
+@include set_modificator(exclude-items($mod__status, $mod__status__disabled), background-color-darken, border-color-darken, color-invert, text-shadow);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__tabs}';
+$__after-object: 'li:active a' 'li.#{$mod__active} a';
+@include set_modificator($mod__status, color-invert, border-color-darken, background-color-darkener, text-shadow);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__tabs}.#{$mod__loading}';
+$__after-object: 'li a';
+@include set_modificator($mod__status, loading);
+
+
+
+.#{$object__tabs} {
+	&.-#{$mod__status__unstyled}- {
+		$__inheritance: object;
+		$__before-object: '';
+		$__object: this;
+		$__after-object: '';
+		@include set_modificator($mod__status, border-color);
+
+		li.#{$mod__active} a {
+			border-width: 1px;
+			border-style: solid;
+			border-bottom-style: none;
+			background-color: $theme__background-color;
+			margin-bottom: -1px;
+		}
+	}
+}
+
+$__inheritance: $object__tabs;
+$__before-object: '';
+$__object: '.#{$object__tabs}.-#{$mod__status__unstyled}-';
+$__after-object: 'li a';
+@include set_modificator(exclude-items($mod__status, $mod__status__unstyled), border-color-important, color, text-shadow);
+
+$__inheritance: $object__tabs;
+$__before-object: '';
+$__object: '.#{$object__tabs}.-#{$mod__status__unstyled}-';
+$__after-object: 'li a:hover';
+@include set_modificator(exclude-items($mod__status, $mod__status__unstyled), color-invert);
+
+$__inheritance: $object__tabs;
+$__before-object: '';
+$__object: '.#{$object__tabs}.-#{$mod__status__unstyled}-';
+$__after-object: 'li:active a:hover' 'li.#{$mod__active} a:hover' 'li:active a' 'li.#{$mod__active} a';
+@include set_modificator(exclude-items($mod__status, $mod__status__unstyled), color-important);

@@ -1,0 +1,146 @@
+@import "mixins";
+@import "themes/basic";
+@import "animations/keyframes";
+
+.cssanimations.csstransforms.csstransitions {
+
+	[class*="-mx-"]:not(.-mx-rotateIn) {
+		&.#{$mod__side-bottom} {
+			@include transform-origin( center top 0 );
+		}
+		
+		&.#{$mod__side-top} {
+			@include transform-origin( center bottom 0 );
+		}
+
+		&.#{$mod__side-left} {
+			@include transform-origin( right center 0 );
+		}
+
+		&.#{$mod__side-right} {
+			@include transform-origin( left center 0 );
+		}
+	}
+
+	.-mx-scaleIn {
+		// @include animation( .2s scaleOutKeyframes );
+		// @include transform( scale(0) );
+		// @include opacity( 0 );
+		opacity: 0;
+		@include transition( opacity .1s linear );
+
+		&.-mx-start {
+			@include animation( 1s scaleInKeyframes );
+			opacity: 1;
+			// @include transform( scale(1) );
+			// @include opacity( 1 );
+		}
+	}
+
+	.-mx-growUp {
+		opacity: 0;
+		@include transition( opacity .1s linear );
+
+		&.-mx-start {
+			opacity: 1;
+			@include animation( 1.5s growUpKeyframes );
+			@include transform( rotateX(0deg) rotateY(0deg) rotateZ(0deg)  );
+		}
+	}
+
+	.-mx-rotateIn {
+		opacity: 0;
+		@include transition( opacity .1s linear );
+
+		&.-mx-start {
+			@include animation( 1.5s rotateInKeyframes );
+			opacity: 1;
+		}
+	}
+
+	.-mx-fadeIn {
+		@include transitions( 1s opacity linear);
+	}
+
+	.-mx-dropIn {
+		opacity: 0;
+		@include transition( opacity .1s linear );
+
+		&.-mx-start {
+			@include animation( .5s dropInKeyframes );
+			opacity: 1;
+		}
+	}
+
+	.-mx-blurIn {
+		@include transitions( 1s opacity ease, 1s filter ease );
+		@include filter( blur(10px) );
+		opacity: 0;
+
+		&.-mx-start {
+			@include filter( blur(0px) );
+			@include opacity( 1 );
+		}
+	}
+
+	.-mx-releaseIn {
+		@include transform( rotateX(-90deg) rotateY(0deg) );
+		@include transition( top 1s ease );
+
+		&.-mx-start {
+			@include animation( 2s releaseInKeyframes );
+			@include transform( rotateX(0deg) rotateY(0deg) );
+		}
+	}
+
+	&.-mx-shader {
+		.-container
+		{
+			// @include filter( blur(1px) );
+		}
+		.-shader,.-modal {
+			// @include filter( blur(0) );
+		}
+	}
+
+
+
+	// For affix scrollspy (jus if .-menu inside)
+	.-mx-affix-scrollspy  {
+		// @include perspective( 1000 );
+
+		li {
+			// @include transition( 1s transform linear);
+			@include transform-origin( right center 0 );
+
+			&.-mx-start {
+				// @include transform( rotateY(-45deg)  );
+				@include animation( .5s bubbleInKeyframes );
+			}
+		}
+	}
+
+}
+
+.no-cssanimations,
+.no-csstransforms,
+.no-csstransitions {
+	.-mx-scaleIn {
+		display: none;
+		@include opacity( 0 );
+
+		&.-mx-start {
+			display: block!important;
+			@include opacity( 1 );
+		}
+	}
+
+	.-mx-blurIn {
+		@include transitions( 1s opacity ease );
+		@include opacity( 0 );
+
+		&.-mx-start {
+			@include opacity( 1 );
+		}
+	}
+}

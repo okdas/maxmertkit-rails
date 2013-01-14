@@ -1,0 +1,327 @@
+// $_input-list: 'input[type="text"]' 'input[type="password"]' 'input[type="datetime"]' 'input[type="datetime-local"]' 'input[type="date"]' 'input[type="month"]' 'input[type="time"]' 'input[type="week"]' 'input[type="number"]' 'input[type="email"]' 'input[type="url"]' 'input[type="search"]' 'input[type="tel"]' 'input[type="color"]' 'textarea' 'select';
+$_input-list: 'input' 'textarea' 'select';
+
+.#{$object__form} {
+	.#{$object__form__field} {
+		@extend %__object;
+
+		position: relative;
+		border-width: $object__form__field-border-width;
+		border-style: solid;
+		line-height: 0;
+		@include border-radius( 3px );
+
+		@include set_modificator($mod__status, border-color-lighten);
+
+		.#{$object__form__field__placeholder} {
+			@extend %__object;
+			position: absolute;
+			top:  $object__form__input-border-width;
+			left: $object__form__input-border-width;
+			opacity: .4;
+		}
+	}
+
+	.#{$object__form__field__help} {
+		display: block;
+		font-size: 85%;
+		color: $object__form__field__help-color;
+		margin-top: 2px;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	textarea,
+	select {
+		@extend %__object;
+
+		border-width: $object__form__input-border-width;
+		border-style: solid;
+		margin: 0;
+
+		@include set_modificator($mod__status, border-color);
+		@include set_modificator($mod__size, input-line-height, font-size, input-padding);
+
+		&[disabled="disabled"], &.-#{$mod__status__disabled}- {
+			@include set_modificator($mod__status__disabled, background-color, color);
+		}
+	}
+
+	label {
+		display: inline-block;
+		position: relative;
+		top:2px;
+	}
+
+	// .#{$object__form__group} {
+	// 	& > label {
+	// 		display: block;
+	// 	}
+	// }
+
+	&.#{$mod__vertical} {
+		& > label {
+			display: block;
+			top: 0;
+			margin-bottom: 4px;
+		}
+
+		& > input + label,
+		& > .#{$object__form__field} + label,
+		& > .#{$object__form__field__help} + label,
+		& > .#{$object__form__group} + label {
+			margin-top: 10px;
+		}
+	}
+
+	&.#{$mod__horizontal} {
+		.#{$object__form__row} {
+			position: relative;
+
+			& > label {
+				width: 160px;
+				text-align: right;
+				position: absolute;
+				top: 8px;
+			}
+
+			& > .#{$object__form__field},
+			& > .#{$object__form__group},
+			& > .#{$object__form__field__help} {
+				position: relative;
+				left: 180px;
+			}
+
+			& + .#{$object__form__row} {
+				margin-top: 10px;
+			}
+		}
+	}
+
+}
+
+// Create	 .-form-field.-modificatorSize-
+// .#{$object__form} {
+// 	$__inheritance: object;
+// 	$__before-object: '';
+// 	$__object: '.#{$object__form__field}';
+// 	$__after-object: '';
+// 	@include set_modificator($mod__size, line-height);
+// }
+
+// Create	 .-form-field.-modificatorSize- .placeholder
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: '.#{$object__form__field}';
+	$__after-object: ' > .#{$object__form__field__placeholder}';
+	@include set_modificator($mod__size, line-height, input-padding, font-size);
+}
+
+// Create	 .-form-field.-modificatorSize- input
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: '.#{$object__form__field}';
+	$__after-object: $_input-list;
+	@include set_modificator($mod__size, font-size, input-padding);
+}
+
+// Create	 .-form-field input.-modificator-:hover
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: append-list( $_input-list, '', ':hover' );
+	$__after-object: '';
+	@include set_modificator(exclude-items($mod__status,$mod__status__disabled), border-color-darken);
+}
+
+// Create	 .-form-field input.-modificator-:focus
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: append-list( $_input-list, '', ':focus' );
+	$__after-object: '';
+	@include set_modificator($mod__status, outline);
+}
+
+// Create	 .-form-field.-modificator- input
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: '.#{$object__form__field}';
+	$__after-object: append-list( $_input-list, ' > ', '' );
+	@include set_modificator($mod__status, border-color);
+}
+
+// Create	 .-form-field:hover.-modificator- input
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: '.#{$object__form__field}:hover';
+	$__after-object: append-list( $_input-list, ' > ', '' );
+	@include set_modificator(exclude-items($mod__status,$mod__status__disabled), border-color-darken);
+}
+
+// Create	 .-form-field.-modificator- input:focus;
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: '.#{$object__form__field}';
+	$__after-object: append-list( $_input-list, ' > ', ':focus' );
+	@include set_modificator($mod__status, outline);
+}
+
+
+// Create	 .-form-field.-DISABLED-;
+.#{$object__form} {
+	$__inheritance: object;
+	$__before-object: '';
+	$__object: '.#{$object__form__field}';
+	$__after-object: append-list( $_input-list, ' > ', '' );
+	@include set_modificator($mod__status__disabled, background-color, color);
+}
+
+
+
+
+
+
+.#{$object__form} {
+	[class*='#{$object__column}'] {
+		float: none;
+		margin-left: 0;
+	}
+
+	@for $i from 1 through $object__column-quantity {
+		$_inputs: append-list( $_input-list, '', '.#{$object__column}#{$i}', comma );
+		// $_inputs: exclude-items($_inputs, selec);
+		#{$_inputs},
+		textarea.#{$object__column}#{$i} {
+			@each $size in $mod__size {
+				$num: index( $mod__size, $size );
+				$_horizontal: 4px;
+
+				@if (4px + nth($mod__size-delta, $num)) > 0 {
+					$_horizontal: 4px + nth($mod__size-delta, $num);
+				}
+				
+				@if $size != default
+				{
+					&._#{$size} {
+						width: __get-column-width($i) - $object__form__input-border-width * 2 - $_horizontal * 2;
+					}
+				}
+				@else {
+					width: __get-column-width($i) - $object__form__input-border-width * 2 - $_horizontal * 2;
+				}
+				
+			}
+		}
+
+		.#{$object__form__field}.#{$object__column}#{$i} {
+			width: __get-column-width($i) - $object__form__field-border-width * 2;
+
+			@each $size in $mod__size {
+				$num: index( $mod__size, $size );
+				$_horizontal: 4px;
+				
+				@if (4px + nth($mod__size-delta, $num)) > 0 {
+					$_horizontal: 4px + nth($mod__size-delta, $num);
+				}
+				
+				@if $size != default
+				{
+					&._#{$size} {
+						input, textarea, select {
+							width: __get-column-width($i) - $object__form__input-border-width * 2 - $_horizontal * 2 - $object__form__field-border-width * 2
+						}
+
+						@media screen and (-webkit-min-device-pixel-ratio:0) {
+							select {
+								width: __get-column-width($i) - $object__form__input-border-width * 2 - $object__form__field-border-width * 2
+							}
+						}
+					}
+				}
+				@else {
+					input, textarea, select {
+						width: __get-column-width($i) - $object__form__input-border-width * 2 - $_horizontal * 2 - $object__form__field-border-width * 2
+					}
+
+					@media screen and (-webkit-min-device-pixel-ratio:0) {
+						select {
+							width: __get-column-width($i) - $object__form__input-border-width * 2 - $object__form__field-border-width * 2
+						}
+					}
+				}
+				
+			}
+
+		}
+
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+		 	select.#{$object__column}#{$i} {
+				width: __get-column-width($i) - $object__form__input-border-width * 2 ;
+
+				@each $size in $mod__size {
+					$num: index( $mod__size, $size );
+					$_horizontal: 4px;
+					
+					@if (4px + nth($mod__size-delta, $num)) > 0 {
+						$_horizontal: 4px + nth($mod__size-delta, $num);
+					}
+					
+					@if $size != default
+					{
+						&._#{$size} {
+							width: __get-column-width($i) - $object__form__input-border-width * 2;
+						}
+					}
+					
+				}
+			}
+		}
+
+		// & > .#{$object__column-offset}#{$i} {
+		// 	margin-left: __get-column-offset-width($i);
+		// }
+	}
+}
+
+
+.#{$object__form} .#{$object__form__field__row}{
+
+	margin-left: -$object__column__gutter-width;
+	// width: $object__row-width;
+	@include clearfix;
+
+	[class*='#{$object__column}'] {
+		float: left;
+		margin-left: $object__column__gutter-width;
+	}
+
+	
+}
+
+.#{$object__form} {
+	input[type='checkbox'],
+	input[type='checkbox']:active,
+	input[type='checkbox']:hover,
+	input[type='checkbox']:focus {
+		border:inherit;
+		background: inherit;
+	}
+}

@@ -1,0 +1,190 @@
+$__inheritance: object;
+$__before-object: '';
+$__object: this;
+$__after-object: '';
+
+.#{$object__notify__container} {
+	position: fixed;
+	z-index: 1002;
+	top: 0; left: 50%;
+	width: $object__notify-width;
+	margin-left: -$object__notify-width / 2;
+	@include perspective( 1000px );
+
+	.#{$object__notify} {
+		@extend %__object;
+		@include box-shadow( 0 3px 3px rgba(0,0,0,.3) );
+
+		margin: $object__notify-margin;
+		position: relative;
+		display: block;
+		border-top-width: 3px;
+		border-top-style: solid;
+		font-size: $object__notify-font-size;
+		
+		@include border-radius( $object__notify-border-radius );
+
+		.#{$object__notify__header} {
+			padding: $object__notify__header-padding;
+			font-weight: bold;
+			position: relative;
+
+			.#{$object__closer} {
+				font-size: 18px;
+				font-weight: bold;
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				margin-top: -11px;
+				cursor: pointer;
+				color: #000;
+
+				@include opacity( .3 );
+
+				&:hover {
+					@include opacity( 1 );
+				}
+			}
+		}
+
+		.#{$object__notify__content} {
+			padding: $object__notify__content-padding;
+		}
+	}
+
+	.-notify-closeAll {
+		display: none;
+		position: absolute;
+		top: 2px;
+		margin-left: 2px;
+		left: 100%;
+		width: 70px;
+		font-weight: bold;
+		text-align: center;
+		cursor: pointer;
+	}
+}
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__notify}';
+$__after-object: '';
+@include set_modificator($mod__status, border-color-darken);
+@include set_modificator(only-items($mod__status, default, $mod__status__disabled), background-color);
+
+$__inheritance: object;
+$__before-object: '';
+$__object: '.#{$object__notify}';
+$__after-object: '.#{$object__notify__header}';
+@include set_modificator(exclude-items($mod__status, default, $mod__status__disabled), color-darken);
+// @include set_modificator(only-items($mod__status, default, $mod__status__disabled), background-color);
+
+
+
+
+
+
+// .#{$object__dropdown} {
+// 	@extend %__object;
+
+// 	position: relative;
+// 	display: inline-block;
+// 	border-width: $object__dropdown-border-width;
+// 	border-width: 1px#{'\9'};
+// 	border-style: solid;
+// 	@include border-radius( $object__dropdown-border-radius );
+// 	min-width: $object__dropdown-min-width;
+// 	min-height: $object__dropdown-min-height;
+// 	max-width: $object__dropdown-max-width;
+// 	max-height: $object__dropdown-max-height;
+// 	@include box-shadow( $object__dropdown-shadow );
+
+// 	.#{$object__dropdown__content} {
+// 		padding: $object__dropdown__content-padding;
+// 	}
+
+// 	.#{$object__dropdown__header} {
+// 		padding: $object__dropdown__header-padding;
+// 		@include border-radius( $object__dropdown-border-radius - 2 $object__dropdown-border-radius - 2 0 0 );
+// 		border-bottom: 1px solid rgba(0,0,0,.1);
+// 	}
+
+// 	&.#{$mod__side-top},
+// 	&.#{$mod__side-bottom},
+// 	&.#{$mod__side-left},
+// 	&.#{$mod__side-right} {
+// 		&:after {
+// 			content: ' ';
+// 			display: inline-block;
+// 			position: absolute;
+// 		}
+// 	}
+
+// 	&.#{$mod__side-top},
+// 	&.#{$mod__side-bottom} {
+// 		&:after {
+// 			width: 90%;
+// 			left: 5%;
+// 			height: 1px;
+
+// 			$__inheritance: object;
+// 			$__before-object: '';
+// 			$__object: this;
+// 			$__after-object: '';
+// 			@include set_modificator($mod__status, gradient-horizontal-three);
+// 		}
+// 	}
+
+// 	&.#{$mod__side-left},
+// 	&.#{$mod__side-right} {
+// 		&:after {
+// 			width: 1px;
+// 			height: 90%;
+// 			top: 5%;
+
+// 			$__inheritance: object;
+// 			$__before-object: '';
+// 			$__object: this;
+// 			$__after-object: '';
+// 			@include set_modificator($mod__status, gradient-vertical-three);
+// 		}
+// 	}
+
+// 	&.#{$mod__side-top} {
+// 		&:after {
+// 			bottom: -1px;
+// 		}
+// 	}
+
+// 	&.#{$mod__side-bottom} {
+// 		&:after {
+// 			top: -1px;
+// 		}
+// 	}
+
+// 	&.#{$mod__side-left} {
+// 		&:after {
+// 			right: -1px;
+// 		}
+// 	}
+
+// 	&.#{$mod__side-right} {
+// 		&:after {
+// 			left: -1px;
+// 		}
+// 	}
+
+// 	@include set_modificator(only-items($mod__status, default, $mod__status__unstyled), background-color, color-invert);
+// }
+
+// $__inheritance: object;
+// $__before-object: '';
+// $__object: '.#{$object__dropdown}';
+// $__after-object: '';
+// @include set_modificator($mod__status, shadow, border-color);
+
+// $__inheritance: object;
+// $__before-object: '';
+// $__object: '.#{$object__dropdown}';
+// $__after-object: '> .#{$object__dropdown__header}';
+// @include set_modificator($mod__status, background-color-darken, color-invert-important, text-shadow);

@@ -1,0 +1,218 @@
+@mixin clearfix {
+	*zoom: 1;
+	&:before,
+	&:after
+	{
+		display: table;
+		content: " ";
+		line-height: 0;
+	}
+	&:after
+	{
+		clear: both;
+	}
+}
+
+@mixin box-sizing( $box-sizing ) {
+	-webkit-box-sizing: $box-sizing;
+	-moz-box-sizing: $box-sizing;
+	-ms-box-sizing: $box-sizing;
+	-o-box-sizing: $box-sizing;
+	box-sizing: $box-sizing;
+}
+
+@mixin box-shadow( $box-shadow... ) {
+	-webkit-box-shadow: $box-shadow;
+	-moz-box-shadow: $box-shadow;
+	-ms-box-shadow: $box-shadow;
+	-o-box-shadow: $box-shadow;
+	box-shadow: $box-shadow;
+}
+
+@mixin text-shadow( $text-shadow... ) {
+	-webkit-text-shadow: $text-shadow;
+	-moz-text-shadow: $text-shadow;
+	-ms-text-shadow: $text-shadow;
+	-o-text-shadow: $text-shadow;
+	text-shadow: $text-shadow;
+}
+
+@mixin border-radius( $border-radius... ) {
+	-webkit-border-radius: $border-radius;
+	-moz-border-radius: $border-radius;
+	-ms-border-radius: $border-radius;
+	-o-border-radius: $border-radius;
+	border-radius: $border-radius;
+}
+
+@mixin gradient-stripes($angle) {
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.35, rgba(255,255,255,.35)), color-stop(.35, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.35)), color-stop(.75, rgba(255,255,255,.35)), color-stop(.75, transparent), to(transparent))!important;
+    background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.35) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.35) 75%, transparent 75%, transparent)!important;
+    background-image: -moz-linear-gradient($angle, rgba(255,255,255,.35) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.35) 75%, transparent 75%, transparent)!important;
+    background-image: -o-linear-gradient($angle, rgba(255,255,255,.35) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.35) 75%, transparent 75%, transparent)!important;
+    background-image: linear-gradient($angle, rgba(255,255,255,.35) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.35) 50%, rgba(255,255,255,.35) 75%, transparent 75%, transparent)!important;
+}
+
+@mixin gradient-stripes-dark($angle) {
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.1, rgba(0,0,0,.1)), color-stop(.1, transparent), color-stop(.5, transparent), color-stop(.5, rgba(0,0,0,.1)), color-stop(.75, rgba(0,0,0,.1)), color-stop(.75, transparent), to(transparent))!important;
+    background-image: -webkit-linear-gradient($angle, rgba(0,0,0,.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.1) 75%, transparent 75%, transparent)!important;
+    background-image: -moz-linear-gradient($angle, rgba(0,0,0,.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.1) 75%, transparent 75%, transparent)!important;
+    background-image: -o-linear-gradient($angle, rgba(0,0,0,.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.1) 75%, transparent 75%, transparent)!important;
+    background-image: linear-gradient($angle, rgba(0,0,0,.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,.1) 50%, rgba(0,0,0,.1) 75%, transparent 75%, transparent)!important;
+}
+
+@mixin gradient-horizontal( $startColor, $endColor ) {
+	background-color: $endColor;
+    background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+    background-image: linear-gradient(to right, $startColor, $endColor); // Standard, IE10
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}');
+}
+
+@mixin gradient-horizontal-three-colors($startColor, $midColor, $colorStop, $endColor) {
+	// background-color: mix($midColor, $endColor, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+    background-image: -webkit-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+    background-image: -moz-linear-gradient(left, top, $startColor, $midColor $colorStop, $endColor);
+    background-image: -o-linear-gradient(left, $startColor, $midColor $colorStop, $endColor);
+    background-image: linear-gradient(to right, $startColor, $midColor $colorStop, $endColor);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}');
+}
+
+@mixin gradient-vertical-three-colors($startColor, $midColor, $colorStop, $endColor) {
+	// background-color: mix($midColor, $endColor, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+    background-image: -webkit-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+    background-image: -moz-linear-gradient(top, top, $startColor, $midColor $colorStop, $endColor);
+    background-image: -o-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+    background-image: linear-gradient(to bottom, $startColor, $midColor $colorStop, $endColor);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}');
+}
+
+@mixin gradient-vertical( $startColor, $endColor ) {
+	background-color: mix($startColor, $endColor, 60%);
+	background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+	background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+	background-image: linear-gradient(to bottom, $startColor, $endColor); // Standard, IE10
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}');
+}
+
+@mixin animation( $animation... ) {
+	animation: $animation;
+	-webkit-animation: $animation;
+	-moz-animation: $animation;
+	-o-animation: $animation;
+	-ms-animation: $animation;
+}
+
+@mixin transition( $transition... ) {
+	transition: $transition;
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+}
+
+@mixin perspective( $perspective ) {
+	perspective: $perspective;
+	-webkit-perspective: $perspective;
+	-moz-perspective: $perspective;
+	-ms-perspective: $perspective;
+	-o-perspective: $perspective;
+}
+
+@mixin transition-duration( $transition-duration... ) {
+	transition-duration: $transition-duration;
+	-webkit-transition-duration: $transition-duration;
+	-moz-transition-duration: $transition-duration;
+	-ms-transition-duration: $transition-duration;
+	-o-transition-duration: $transition-duration;
+}
+
+@mixin transition-property( $transition-property... ) {
+	transition-property: $transition-property;
+	-webkit-transition-property: $transition-property;
+	-moz-transition-property: $transition-property;
+	-ms-transition-property: $transition-property;
+	-o-transition-property: $transition-property;
+}
+
+@mixin transform( $transform... ) {
+	transform: $transform;
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+}
+
+@mixin transform-style( $transform-style ) {
+	transform-style: $transform-style;
+	-webkit-transform-style: $transform-style;
+	-moz-transform-style: $transform-style;
+	-ms-transform-style: $transform-style;
+	-o-transform-style: $transform-style;
+}
+
+@mixin transform-origin( $transform-origin... ) {
+	transform-origin: $transform-origin;
+	-webkit-transform-origin: $transform-origin;
+	-moz-transform-origin: $transform-origin;
+	-ms-transform-origin: $transform-origin;
+	-o-transform-origin: $transform-origin;
+}
+
+@mixin filter( $filter... ) {
+	filter: $filter;
+	-webkit-filter: $filter;
+	-moz-filter: $filter;
+	-ms-filter: $filter;
+	-o-filter: $filter;
+}
+
+@mixin opacity( $opacity... ) {
+	opacity: $opacity;
+	-webkit-opacity: $opacity;
+	-moz-opacity: $opacity;
+	-ms-opacity: $opacity;
+	-o-opacity: $opacity;
+}
+
+@mixin transitions( $transition ) {
+	$_types: '', '-webkit-', '-moz-', '-o-', '-ms-';
+
+	@each $type in $_types {
+		#{$type}transition: _generate-transitions-fields( $type, $transition... ) ;
+	}
+}
+
+@mixin transitions( $transition... ) {
+	$_types: '', '-webkit-', '-moz-', '-o-', '-ms-';
+
+	@each $type in $_types {
+		#{$type}transition: _generate-transitions-fields( $type, $transition... ) ;
+	}
+}
+
+@function _generate-transitions-fields( $type, $transition... ) {
+	$_return: '';
+	@each $tr in $transition {
+		@if $_return != '' {
+			$_return: $_return + ', ';
+		}
+		$_return: $_return + _generate-transitions( $tr, $type );
+	}
+
+	@return #{$_return};
+}
+
+@function _generate-transitions( $transition, $type ) {
+	@return nth($transition, 1) #{$type}nth($transition, 2) nth($transition, 3);
+}

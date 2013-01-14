@@ -1,0 +1,116 @@
+@mixin set_modificator ($type-list, $mods... ) {
+
+
+	@each $mod in $mods {
+
+		$__is-status: true;
+		@each $__type-list-item in $type-list {
+			@if index( $mod__status, $__type-list-item ) == false {
+				$__is-status: false;
+			}
+		}
+		@if $__is-status !=false {
+			@include __set_modificator-type(status, $type-list, $mod )
+		}
+
+		$__is-size: true;
+		@each $__type-list-item in $type-list {
+			@if index( $mod__size, $__type-list-item ) == false {
+				$__is-size: false;
+			}
+		}
+		@if $__is-size != false {
+			@include __set_modificator-type(size, $type-list, $mod )
+		}
+			
+	}
+
+
+
+}
+
+@function _get-modificator-name( $name ) {
+	$_result: '';
+
+	@if index( $mod__status, $name ) != false and $name != default {
+		$_result: '.-#{$name}-';
+	}
+
+	@if index( $mod__size, $name ) != false and $name != default {
+		$_result: '._#{$name}';
+	}
+
+	@return $_result;
+}
+
+@function _get-modificator-nesting( $name, $_before, $_obj, $_after ) {
+	$_result: '';
+	// #{$_before} #{$_obj}#{_get-modificator-name( $name )} #{$_after};
+	@each $_before-item in $_before {
+		@each $_obj-item in $_obj {
+			@each $_after-item in $_after {
+				$_result: $_result + '#{$_before-item} #{$_obj-item}#{_get-modificator-name( $name )} #{$_after-item},';
+			}
+		}
+	}
+	@return $_result;
+}
+
+@mixin __set_modificator-type( $type, $list, $mod ) {
+	@each $status in $list {
+		@if $__object == this {
+			$__name: _get-modificator-name( $status );
+			&#{$__name} {
+				@extend %#{$__inheritance}-#{$type}-#{$status}-#{$mod};
+			}
+		}
+		@else {
+			
+
+				@each $_obj in $__object {
+					@each $_before in $__before-object {
+						@each $_after in $__after-object {
+							$_nesting: _get-modificator-nesting( $status, $_before, $_obj, $_after );
+							#{$_nesting} {
+								@extend %#{$__inheritance}-#{$type}-#{$status}-#{$mod};
+							}
+						}
+					}
+				}
+
+			
+		}
+	}
+}
+
+
+
+@function exclude-items ( $list, $items... ) {
+	$_result: ();
+	@each $item in $list {
+		@if index($items, $item) == false {
+			$_result: append($_result, $item, space);
+		}
+	}
+
+	@return $_result;
+}
+
+@function only-items ( $list, $items... ) {
+	$_result: ();
+	@each $item in $list {
+		@if index($items, $item) != false {
+			$_result: append($_result, $item, space);
+		}
+	}
+
+	@return $_result;
+}
+
+@function append-list( $list, $appendix-before:'', $appendix-after:'', $separator: space ) {
+	$_result: ();
+	@each $item in $list {
+		$_result: append($_result, #{$appendix-before}#{$item}#{$appendix-after}, $separator);
+	}
+	@return $_result;
+}
