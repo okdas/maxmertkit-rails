@@ -1,4 +1,3 @@
-require "rails"
 require "maxmertkit-rails/version"
 
 module Maxmertkit
