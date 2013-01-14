@@ -1,6 +1,8 @@
 # Maxmertkit::Rails
 
-TODO: Write a gem description
+Maxmertkit
+
+Css framework based on widget-modifier coding style
 
 ## Installation
 
@@ -16,9 +18,34 @@ Or install it yourself as:
 
     $ gem install maxmertkit-rails
 
-## Usage
+## Stylesheets
 
-TODO: Write usage instructions here
+Add necessary stylesheet file to app/assets/stylesheets/application.css
+
+``` css
+*= require maxmertkit
+*= require maxmertkit-components
+*= require maxmertkit-animation
+```
+
+## Javascripts
+
+Add necessary javascript(s) files to app/assets/javascripts/application.js
+
+``` javascript
+
+// Include any maxmertkit's javascripts
+
+//= require maxmertkit
+//= require maxmertkit.notify
+//= require maxmertkit.button
+//= require maxmertkit.affix
+//= require maxmertkit.carousel
+//= require maxmertkit.modal
+//= require maxmertkit.popup
+//= require maxmertkit.scrollspy
+//= require maxmertkit.tabs
+```
 
 ## Contributing
 
