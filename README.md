@@ -4,6 +4,8 @@ Maxmertkit
 
 Css framework based on widget-modifier coding style
 
+Official demo: http://maxmert.com/
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -46,6 +48,13 @@ Add necessary javascript(s) files to app/assets/javascripts/application.js
 //= require maxmertkit.scrollspy
 //= require maxmertkit.tabs
 ```
+
+## Thanks
+
+Thanks maxmert! This guy is owner
+https://github.com/maxmert/maxmertkit
+
+Official demo: http://maxmert.com/
 
 ## Contributing
 
