@@ -36,8 +36,10 @@ Add necessary javascript(s) files to app/assets/javascripts/application.js
 
 ``` javascript
 
-// Include any maxmertkit's javascripts
+// Include all maxmertkit's javascripts
+//= require maxmertkit.all
 
+// Or peek any of them yourself
 //= require maxmertkit
 //= require maxmertkit.notify
 //= require maxmertkit.button
