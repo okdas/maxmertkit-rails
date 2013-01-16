@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 # gem 'rails'
-# gem 'sass-rails', '~> 3.2.3'
+gem 'sass-rails', '~> 3.2.3'
