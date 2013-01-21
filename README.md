@@ -49,6 +49,11 @@ Add necessary javascript(s) files to app/assets/javascripts/application.js
 //= require maxmertkit.popup
 //= require maxmertkit.scrollspy
 //= require maxmertkit.tabs
+
+//= require libs/easing
+//= require libs/html5shiv
+//= require libs/imagesLoaded
+//= require libs/modernizr
 ```
 
 ## Thanks
