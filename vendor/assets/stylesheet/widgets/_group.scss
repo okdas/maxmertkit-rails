@@ -12,6 +12,7 @@ $__after-object: '';
 .#{$object__group} {
 	display: inline-block;
 	font-size: 0;
+	vertical-align: middle;
 
 	.#{$object__group__appendix} {
 		@extend %__object;

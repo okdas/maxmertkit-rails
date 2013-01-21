@@ -23,8 +23,6 @@
 		}
 
 	Popup = function( element_, options_ ) {
-		// Don't need this string, if this constructor will do the same and more, than $.kit constructor.
-		// $.kit.apply( this, element_, options_ );
 
 		this.element = element_;
 		this.name = _name;
@@ -237,7 +235,7 @@
 		var $me = $(me.element);
 
 		if( $.easing !== undefined && (me.options.animation.split(/[ ,]+/)[1] in $.easing || me.options.animation.split(/[ ,]+/)[0] in $.easing) ) {
-			me.El.slideDown({
+			me.El.animate({opacity:1},50).slideDown({
 				duration: me.options.animationDuration,
 				easing: me.options.animation.split(/[ ,]+/)[0],
 				complete: function(){
@@ -246,7 +244,7 @@
 			});
 		}
 		else {
-			me.El.show();
+			me.El.show().animate({opacity:1},50);
 			this.El.find('.-arrow').css({opacity: 1});
 			if( Modernizr && Modernizr.csstransitions && Modernizr.csstransforms3d && Modernizr.cssanimations )
 				me.El.addClass('-mx-start');
@@ -312,7 +310,7 @@
 		var $me = $(me.element);
 
 		if( $.easing !== undefined && (me.options.animation.split(/[ ,]+/)[1] in $.easing || me.options.animation.split(/[ ,]+/)[0] in $.easing) ) {
-			me.El.slideUp({
+			me.El.animate({opacity:0},200).slideUp({
 				duration: me.options.animationDuration,
 				easing: me.options.animation.split(/[ ,]+/)[1] !== undefined ? me.options.animation.split(/[ ,]+/)[1] : me.options.animation,
 				complete: function(){
@@ -322,14 +320,14 @@
 		}
 		else {
 			if( Modernizr && Modernizr.csstransitions && Modernizr.csstransforms3d && Modernizr.cssanimations ) {
-				me.El.removeClass('-mx-start');
+				me.El.animate({opacity:0},200).removeClass('-mx-start');
 				setTimeout(function(){
 					if ( me.state === 'closed' )
 						me.El.hide()
 				},1000)
 			}
 			else
-				me.El.hide();
+				me.El.animate({opacity:0},200).hide();
 		}
 	}
 
@@ -360,19 +358,19 @@
 
 		switch( me.options.placement ) {
 			case 'top':
-				pos = { top: actualPosition.top - me.El.outerHeight() - arrowSize + me.options.offset[0], left: actualPosition.left + actualWidth / 2 - me.El.outerWidth() / 2 + me.options.offset[1] }
+				pos = { top: Math.round( actualPosition.top - me.El.outerHeight() - arrowSize + me.options.offset[0] ), left: Math.round( actualPosition.left + actualWidth / 2 - me.El.outerWidth() / 2 + me.options.offset[1] ) }
 			break;
 
 			case 'bottom':
-				pos = { top: actualPosition.top + actualHeight + arrowSize + me.options.offset[0], left: actualPosition.left + actualWidth / 2 - me.El.outerWidth() / 2 + me.options.offset[1] };
+				pos = { top: Math.round( actualPosition.top + actualHeight + arrowSize + me.options.offset[0] ), left: Math.round( actualPosition.left + actualWidth / 2 - me.El.outerWidth() / 2 + me.options.offset[1] ) };
 			break;
 
 			case 'left':
-				pos = { top: actualPosition.top + actualHeight / 2 - me.El.outerHeight() / 2, left: actualPosition.left - me.El.outerWidth() - arrowSize + me.options.offset[1] }
+				pos = { top: Math.round( actualPosition.top + actualHeight / 2 - me.El.outerHeight() / 2 ), left: Math.round(actualPosition.left - me.El.outerWidth() - arrowSize + me.options.offset[1]) }
 			break;
 
 			case 'right':
-				pos = { top: actualPosition.top + actualHeight / 2 - me.El.outerHeight() / 2, left: actualPosition.left + actualWidth + arrowSize + me.options.offset[1]}
+				pos = { top: Math.round(actualPosition.top + actualHeight / 2 - me.El.outerHeight() / 2), left: Math.round(actualPosition.left + actualWidth + arrowSize + me.options.offset[1])}
 			break;
 		}
 

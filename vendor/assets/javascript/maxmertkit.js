@@ -64,7 +64,7 @@
 			element_.bind( event + '.' + me.name, handler );
 		});
 	}
-	
+
 	$.kit.prototype.enable = function() {
 		var me = this;
 

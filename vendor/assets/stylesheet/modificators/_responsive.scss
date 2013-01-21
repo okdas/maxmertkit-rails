@@ -1,0 +1,82 @@
+@media screen and (max-width: 1200px) {
+	.#{$mod__responsive} {
+		.-container {
+			width: 990px;
+		}
+
+		@include __set-object-row(990px);
+		@include __set-object-form-row(990px);
+
+		.#{$object__form} .#{$object__form__field__row}{
+
+			[class*='#{$object__column}'] {
+				float: left;
+				margin-left: $object__column__gutter-width;
+			}
+			
+		}
+	}
+}
+
+@media screen and (max-width: 990px) {
+	.#{$mod__responsive} {
+		.-container {
+			width: 800px;
+		}
+
+		@include __set-object-row(800px);
+		@include __set-object-form-row(800px);
+
+		.#{$object__form} .#{$object__form__field__row}{
+
+			[class*='#{$object__column}'] {
+				float: left;
+				margin-left: $object__column__gutter-width;
+			}
+			
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.#{$mod__responsive} {
+		.-container {
+			width: 100%;
+		}
+
+		.#{$object__row},
+		[class^='#{$object__column}'],
+		.#{$object__form__field__row} {
+			margin-left: 2.5%!important;
+			width: 95%!important;
+		}
+
+		.#{$object__form} .#{$object__form__field__row} input,
+		.#{$object__form} .#{$object__form__field__row} select,
+		.#{$object__form} .#{$object__form__field__row} textarea {
+			&[class*='#{$object__column}'] {
+				float: none;
+				margin-left: 0!important;
+				width: 100%!important;
+				margin-bottom: 7px;
+			}
+		}
+
+		.#{$object__form} .#{$object__form__field__row} {
+			[class*='#{$object__column}'] {
+				float: none;
+				margin-left: 0!important;
+				margin-bottom: 7px;
+				overflow: hidden;
+				width: 101.5%;
+
+				input,
+				textarea,
+				select {
+					width: 100%!important;
+					padding: 5px 8px 6px!important;
+				}
+			}
+		}
+	}
+}
