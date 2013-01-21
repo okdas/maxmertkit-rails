@@ -16,6 +16,7 @@
 		var process = $.proxy( this.process, this );
 		this.$scrollable = $(this.element).is('body') ? $(window) : $(this.element);
 		$(window).on( 'scroll.' + this.name, process );
+		$(window).on( 'resize.' + this.name, $.proxy(this.refresh, this) );
 
 		this.init();
 		process();

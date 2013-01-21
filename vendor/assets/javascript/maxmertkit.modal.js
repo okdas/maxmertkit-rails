@@ -94,8 +94,8 @@
 		,	height = $me.outerHeight();
 
 		$me.css({
-			marginLeft: -width / 2,
-			marginTop: -height / 2
+			marginLeft: Math.round(-width / 2),
+			marginTop: Math.round(-height / 2)
 		});
 	}
 
@@ -224,7 +224,7 @@
 		if( me.state === 'out' ) {
 			
 			if( me.options.animation === null )
-				me.element.hide();
+				$me.hide();
 			else {
 				me._closeAnimation();
 			}
