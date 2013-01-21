@@ -12,11 +12,14 @@ $__after-object: '';
 	@include box-shadow( $object__progressbar-shadow );
 	line-height: 0;
 	min-height: 12px;
+	white-space: nowrap;
 
 	.#{$object__progressbar__bar} {
 		@extend %__object;
 		height: 100%;
 		min-height: 12px;
+		white-space: nowrap;
+		overflow: hidden;
 		@include border-radius( $object__progressbar-border-radius );
 		@include box-shadow( $object__progressbar__bar-shadow );
 
@@ -29,7 +32,9 @@ $__after-object: '';
 		position: absolute;
 		left:0; top: 0;
 		top: 0; bottom: 0;
+		overflow: hidden;
 		text-align: center;
+		white-space: nowrap;
 	}
 }
 

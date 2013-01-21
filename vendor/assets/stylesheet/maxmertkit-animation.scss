@@ -50,11 +50,11 @@
 
 	.-mx-rotateIn {
 		opacity: 0;
-		@include transition( opacity .1s linear );
+		// @include transition( opacity .1s linear );
 
 		&.-mx-start {
 			@include animation( 1.5s rotateInKeyframes );
-			opacity: 1;
+			// @include opacity( 1!important );
 		}
 	}
 
@@ -90,6 +90,7 @@
 		&.-mx-start {
 			@include animation( 2s releaseInKeyframes );
 			@include transform( rotateX(0deg) rotateY(0deg) );
+			opacity: 1;
 		}
 	}
 

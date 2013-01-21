@@ -1,11 +1,10 @@
 // // ================================ %BODY% ================================ \\
+
 body {
 	font: $theme__font-size $theme__font-family;
 	line-height: $theme__line-height;
 	color: $theme__color;
 	background-color: $theme__background-color;
-	// -webkit-font-smoothing: none;
-	-webkit-font-smoothing: antialiased;
 }
 
 // input {
@@ -158,39 +157,12 @@ dl {
 
 // ================================ %GRID% ================================ \\
 
-@function __get-column-width( $column-quantity: $object__column-quantity, $column-width: $object__column-width, $gutter-width: $object__column__gutter-width ) {
-	@return $column-width * $column-quantity + $gutter-width * ( $column-quantity - 1 );
-}
-
-@function __get-column-offset-width( $column-quantity: $object__column-quantity, $column-width: $object__column-width, $gutter-width: $object__column__gutter-width ) {
-	@return $column-width * $column-quantity + $gutter-width * ( $column-quantity + 1 );
-}
-
 .#{$object__container} {
 	width: $object__row-width;
 	margin: 0 auto;
 }
 
-.#{$object__row} {
-	margin-left: -$object__column__gutter-width;
-	width: $object__row-width;
-	@include clearfix;
-
-	[class^='#{$object__column}'] {
-		float: left;
-		margin-left: $object__column__gutter-width;
-	}
-
-	@for $i from 1 through $object__column-quantity {
-		& > .#{$object__column}#{$i} {
-			width: __get-column-width($i);
-		}
-
-		& > .#{$object__column-offset}#{$i} {
-			margin-left: __get-column-offset-width($i);
-		}
-	}
-}
+@include __set-object-row();
 
 .#{$object__row-fluid} {
 	width: $object__row-fluid-width + $object__row-fluid__column__gutter-width;

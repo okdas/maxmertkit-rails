@@ -216,3 +216,145 @@
 @function _generate-transitions( $transition, $type ) {
 	@return nth($transition, 1) #{$type}nth($transition, 2) nth($transition, 3);
 }
+
+
+@function __set-column-width( $row-width: $object__row-width, $gutter-width: $object__column__gutter-width, $column-quantity: $object__column-quantity ) {
+	@return ($row-width - ($gutter-width * ($column-quantity))) / $column-quantity;
+}
+
+@function __get-column-width( $column-quantity: $object__column-quantity, $column-width: $object__column-width, $gutter-width: $object__column__gutter-width ) {
+	@return $column-width * $column-quantity + $gutter-width * ( $column-quantity - 1 );
+}
+
+@function __get-column-offset-width( $column-quantity: $object__column-quantity, $column-width: $object__column-width, $gutter-width: $object__column__gutter-width ) {
+	@return $column-width * $column-quantity + $gutter-width * ( $column-quantity + 1 );
+}
+
+@mixin __set-object-row( $row-width: $object__row-width, $gutter-width: $object__column__gutter-width, $column-quantity: $object__column-quantity ) {
+	.#{$object__row} {
+		margin-left: -$gutter-width;
+		width: $row-width;
+		@include clearfix;
+
+		& > [class^='#{$object__column}'] {
+			float: left;
+			margin-left: $gutter-width;
+		}
+
+		@for $i from 1 through $column-quantity {
+			& > .#{$object__column}#{$i} {
+				width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width);
+			}
+
+			& > .#{$object__column-offset}#{$i} {
+				margin-left: __get-column-offset-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width);
+			}
+		}
+	}
+}
+
+@mixin __set-object-form-row( $row-width: $object__row-width, $gutter-width: $object__column__gutter-width, $column-quantity: $object__column-quantity ) {
+
+	.#{$object__form} {
+		[class*='#{$object__column}'] {
+			float: none;
+			margin-left: 0;
+		}
+
+		@for $i from 1 through $object__column-quantity {
+			$_inputs: append-list( $object__form__input-list, '', '.#{$object__column}#{$i}', comma );
+			// $_inputs: exclude-items($_inputs, selec);
+			#{$_inputs},
+			textarea.#{$object__column}#{$i} {
+				@each $size in $mod__size {
+					$num: index( $mod__size, $size );
+					$_horizontal: 4px;
+
+					@if (4px + nth($mod__size-delta, $num)) > 0 {
+						$_horizontal: 4px + nth($mod__size-delta, $num);
+					}
+					
+					@if $size != default
+					{
+						&._#{$size} {
+							width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 - $_horizontal * 2;
+						}
+					}
+					@else {
+						width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 - $_horizontal * 2;
+					}
+					
+				}
+			}
+
+			.#{$object__form__field}.#{$object__column}#{$i} {
+				width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__field-border-width * 2;
+
+				@each $size in $mod__size {
+					$num: index( $mod__size, $size );
+					$_horizontal: 4px;
+					
+					@if (4px + nth($mod__size-delta, $num)) > 0 {
+						$_horizontal: 4px + nth($mod__size-delta, $num);
+					}
+					
+					@if $size != default
+					{
+						&._#{$size} {
+							input, textarea, select {
+								width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 - $_horizontal * 2 - $object__form__field-border-width * 2
+							}
+
+							// @media screen and (-webkit-min-device-pixel-ratio:0) {
+							// 	select {
+							// 		width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 - $object__form__field-border-width * 2
+							// 	}
+							// }
+						}
+					}
+					@else {
+						input, textarea, select {
+							width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 - $_horizontal * 2 - $object__form__field-border-width * 2
+						}
+
+						// @media screen and (-webkit-min-device-pixel-ratio:0) {
+						// 	select {
+						// 		width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 - $object__form__field-border-width * 2
+						// 	}
+						// }
+					}
+					
+				}
+
+			}
+
+			@media screen and (-webkit-min-device-pixel-ratio:0) {
+			 	select.#{$object__column}#{$i} {
+					width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2 ;
+
+					@each $size in $mod__size {
+						$num: index( $mod__size, $size );
+						$_horizontal: 4px;
+						
+						@if (4px + nth($mod__size-delta, $num)) > 0 {
+							$_horizontal: 4px + nth($mod__size-delta, $num);
+						}
+						
+						@if $size != default
+						{
+							&._#{$size} {
+								width: __get-column-width($i, __set-column-width($row-width, $gutter-width, $column-quantity), $gutter-width) - $object__form__input-border-width * 2;
+							}
+						}
+						
+					}
+				}
+			}
+
+			// & > .#{$object__column-offset}#{$i} {
+			// 	margin-left: __get-column-offset-width($i);
+			// }
+		}
+	}
+
+}

@@ -14,8 +14,6 @@ $__after-object: '';
 
 	.#{$object__button} {
 		@include box-shadow( none );
-		position: relative;
-		bottom: -1px;
 
 		&:hover {
 			@include box-shadow( $object__button-shadow );
@@ -45,11 +43,6 @@ $__after-object: '';
 		}
 	}
 
-	.#{$object__group} {
-		position: relative;
-		top: -1px;
-	}
-
 	&.-#{$mod__status__disabled}- {
 		.#{$object__button},
 		.#{$object__button}:hover,
@@ -67,17 +60,7 @@ $__after-object: '';
 			border-color: #eee!important;
 			@include text-shadow( none );
 			color: #ccc;
-			// $__inheritance: $object__toolbar;
-			// $__before-object: '';
-			// $__object: this;
-			// $__after-object: '';
-			// @include set_modificator(only-items($mod__status, $mod__status__disabled), color);
 		}
-	}
-
-	input {
-		position: relative;
-		bottom: -1px;
 	}
 
 	.#{$object__button}:active,

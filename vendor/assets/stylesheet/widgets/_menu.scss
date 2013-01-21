@@ -15,6 +15,7 @@ $__after-object: '';
 			@extend %__object;
 			
 			cursor: pointer;
+			text-decoration: none;
 		}
 		
 		position: relative;
@@ -22,6 +23,7 @@ $__after-object: '';
 		& > .#{$object__dropdown} {
 			display: none;
 			position: absolute;
+			min-height: auto;
 		}
 	}
 

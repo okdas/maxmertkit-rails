@@ -84,6 +84,7 @@ $object__row-fluid__column__gutter-width: $object__column__gutter-width / $objec
 
 // ------------ Form
 $object__form: -form;
+$object__form__input-list: 'input' 'textarea' 'select';
 $object__form__row: #{$object__form}-row;
 $object__form__group: #{$object__form}-group;
 $object__form__field: #{$object__form}-field;
@@ -116,9 +117,6 @@ $object__group__appendix-border-width: 1px;
 
 // ------------ Icon
 $object__icon: -icon;
-
-// ------------ Example if icon is sprite
-
 // $object__icon-width: 14px;
 // $object__icon-height: 14px;
 
@@ -144,7 +142,7 @@ $object__icon__content: "\f000" "\f001" "\f002" "\f003" 	"\f004" "\f005" "\f006"
 
 $object__icon__social: #{$object__icon}-social;
 $object__icon__social-names: 		facebook	googleplus	twitter		linkedin	dropbox		evernote	forrst		dribbble		cloudapp	github		spotify		readitlater		soundcloud		tumblr		smashingmagazine		itunes		appstore		macappstore		androidmarket	pinterest		quora		lanyrd		paypal		amazon		skype	lastfm		yelp	forsquare	klout	wikipedia	disqus	intensedebate	google		gmail	vimeo	scribd	youtube		wordpress	songkick	posterous	eventbrite	flattr	plancast	ceo		iefive	meetup		openid		htmlsix	parents		guest	creativecommonlicence	rss		chrome		eventasaurus	weibo	plurk	grooveshark		blogger		viadeo		podcast		fivehundredpx	bitcoin		ninetyninedesigns	pinboard	stumble		myspace		windowslive		eventful	xing	flickr	delicious	googleplay	opentable	digg	reddit	angellist	instagram	steam		vkontakte	appnet	drupal	identica	saveforlater	adobeacrobat	bitbucket	buffer	lego	login	hackernews	stackoverflow	lkdto	callphone	sendmessage		addtocalendar	addtocart	print	stripe	dwolla;
-$object__icon__social-content: 		'f' 		'+' 		'T' 		'L' 		'd' 		'E' 		':'			'D' 			'c' 		"è"			'='			'I'				's'				't'			'*'						'i'			'A'				'^'				'&'				'1'				'q'			'-'			'$'			'a'			'S'		'l'			'y'		'4'			'K'		','			'Q'		'{'				'G'			'm'		'V'		'}'		'U'			'w'			'k'			'~'			'|'			'%'		'P'			'Y'		'6'		'M'			'o'			'5'		'"'			'?'		'C'						'R'		'['			'v'				'J'		'j'		'8'				'B'			'H'			'`'			'0'				'2'			'9'					'n'			'/'			'_'			'W'				"'"			'X'		'F'		'#'			'h'			'Ç'			';'		'>'		'Ö'			'Ü'			'b'			'N'			'á'		'ä'		'â'			'ç'				'ã'				'é'			'å'		'ê'		'ë'		'í'			'ì'				'î'		'7'			']'				'.'				'É'			'Ñ'		'£'		'à';
+$object__icon__social-content: 		'f' 		'+' 		'T' 		'L' 		'd' 		'E' 		':'			'D' 			'c' 		"è"			'='			'I'				's'				't'			'*'						'i'			'A'				'^'				'&'				'1'				'q'			'-'			'$'			'a'			'S'		'l'			'y'		'4'			'K'		','			'Q'		'{'				'G'			'm'		'V'		'}'		'U'			'w'			'k'			'~'			'|'			'%'		'P'			'Y'		'6'		'M'			'o'			'5'		'"'			'?'		'C'						'R'		'['			'v'				'J'		'j'		'8'				'B'			'H'			'`'			'0'				'2'			'9'					'n'			'/'			'_'			'W'				"'"			'X'		'F'		'#'			'h'			'Ç'			';'		'>'		'Ö'			'Ü'			'b'			'N'			'á'		'ä'		'â'			'ç'				'ã'				'é'			'å'		'ê'		'ë'		'í'			'ì'				'î'		'7'			']'				'.'				'É'			'Ñ'		'£'		'à'; 
 
 // ------------ Caret
 $object__caret: -caret;
@@ -317,6 +315,8 @@ $mod__striped: _striped_;
 $mod__hovered: _hovered_;
 $mod__bordered: _bordered_;
 $mod__unclickable: _unclickable_;
+
+$mod__responsive: _responsive_;
 
 $mod__side-top: _top_;
 $mod__side-bottom: _bottom_;
