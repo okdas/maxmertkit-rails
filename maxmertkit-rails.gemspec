@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Maxmertkit::Rails::VERSION
   gem.authors       = ["Viktor Tomilin"]
   gem.email         = ["caballerosolar@gmail.com"]
-  gem.description   = ["Css framework based on widget-modifier coding style"]
-  gem.summary       = ["Css framework based on widget-modifier coding style"]
+  gem.description   = "Css framework based on widget-modifier coding style"
+  gem.summary       = "Css framework based on widget-modifier coding style"
   gem.homepage      = "http://maxmert.com/"
 
   gem.files         = `git ls-files`.split($/)
